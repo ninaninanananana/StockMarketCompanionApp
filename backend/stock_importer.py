@@ -2,8 +2,11 @@ import twstock
 from sqlalchemy.orm import Session
 from models import StockMaster
 
-# TwStock market 代碼對應
-VALID_MARKETS = {"sii", "otc"}
+# TwStock market 中文對應英文代碼
+MARKET_MAP = {"上市": "sii", "上櫃": "otc"}
+
+# 只匯入一般股票，排除認購權證、ETF、TDR 等
+VALID_TYPES = {"股票"}
 
 
 def fetch_and_import(db: Session) -> dict:
@@ -11,13 +14,18 @@ def fetch_and_import(db: Session) -> dict:
 
     for code, info in twstock.codes.items():
         # 只處理上市(sii)與上櫃(otc)，跳過興櫃、指數等
-        if getattr(info, "market", None) not in VALID_MARKETS:
+        market_zh = getattr(info, "market", None)
+        if market_zh not in MARKET_MAP:
+            continue
+
+        # 只取一般股票，排除認購權證、ETF 等
+        if getattr(info, "type", None) not in VALID_TYPES:
             continue
 
         stock_id = code
         stock_name = getattr(info, "name", "") or ""
-        industry = getattr(info, "group", None)
-        market = info.market  # 直接存 sii / otc
+        industry = getattr(info, "group", None) or None
+        market = MARKET_MAP[market_zh]  # 轉為英文代碼 sii / otc
 
         stocks.append(
             StockMaster(
