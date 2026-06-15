@@ -1,34 +1,180 @@
 請先跟我討論
 請先閱讀 SPEC.md
 
-需求： 首頁｜市場總覽
-請使用 FinMind 套件
-請塞入 資料表 market_snapshot
-大盤與市場整體情绪
-包含數據：大盤總成交量、上漲/下跌家數、漲停/跌停家數、三大法人。
+需求： 首頁｜熱門主題
+請使用 yfinance 套件 將 stock_master 的代號分批塞入,取得stock_id (需注意上是／上櫃 stock_id後面要加.TW or .TWO)
 
-請問有哪裡需要討論嗎
+需求：找出 符合以下規則的股票
+基本門檻：漲幅 $\ge$  3%
+且同時段內，同一個產業（例如半導體設備、散熱）有 3、4 家公司同時發動並站上 3%。
+且條件 A（看成交量）： 今日累計成交量 $>$ 2,000 張（或 5 日均量 2 倍以上）。
+或 條件 B（看成交）： 今日累計成交金額 $>$ 1 億元新台幣（或盤中比例換算）。。
+完全符合 
+請塞入 資料表 market_topic_snapshot
 
+更新頻率：每小時一次,每次更新前需要將 今日的資料全刪除 在寫進新的資料
+
+請問哪裡需要補充？
 ---
 
 ## 討論事項
 
-### 1. FinMind API Token
-FinMind 免費版每日限制約 600 requests。
-請問是否已申請 token？若沒有，需先至 FinMind 官網申請，否則資料抓取會受限。
-答： 已申請,token 為eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiYjQxMDIwMzAzOUBnbWFpbC5jb20iLCJlbWFpbCI6ImI0MTAyMDMwMzlAZ21haWwuY29tIiwidG9rZW5fdmVyc2lvbiI6MH0.XPLpTsNSaUE9wmTB6j_rifRoEx6l1h8BBYpdlUBQrC8
-### 2. market_snapshot 的時間維度
-SPEC 上顯示「更新時間 09:03」，這代表快照是盤中即時還是每日收盤後一次？
+### Q1. `stock_master.market` 對應 yfinance 後綴
 
-答：- **盤中多次更新**：同一天多筆
+資料庫確認 `market` 欄位值為：
+- `sii` → 上市 → yfinance 後綴 `.TW`（例：`2330.TW`）
+- `otc` → 上櫃 → yfinance 後綴 `.TWO`（例：`6271.TWO`）
 
-### 3. 三大法人的對應欄位
-FinMind 三大法人資料（`TaiwanStockInstitutionalInvestorsBuySell`）是「個股」維度的，
-要彙總成全市場合計（如：外資買超 +328 億），需要做加總。
-請確認這樣的設計是你要的？
-答：對 請幫我做加總
-### 4. 觸發方式
-沿用 stock_importer 模式（獨立 script + API endpoint 觸發），
-還是要做定時排程（cron job 每天收盤後自動跑）？
+**此對應邏輯確認無誤，可直接實作。**
+答：對
+---
 
-答：沿用 stock_importer 模式（獨立 script + API endpoint 觸發）
+### Q2. 產業分類來源
+
+`stock_master` 已有 `industry` 欄位（來自 FinMind，中文大分類，例如「半導體業」）。  
+yfinance 的 `.info['industry']` 是英文，且台灣股票有時為空。
+
+**待確認：產業分類直接用 `stock_master.industry`，不從 yfinance 取？**
+
+答：產業分類直接用 `stock_master.industry`
+
+---
+
+### Q3. 執行時機與 yfinance 資料內容
+
+yfinance 用 `period="2d"` 可同時取得昨日收盤價 + 今日即時累計量。  
+盤中時段（9:00–13:30）每次呼叫都能拿到最新狀態。
+
+**待確認：**
+- 每小時執行一次（非交易時段可跳過）？
+- 還是只在收盤後執行一次（資料完整、較簡單）？
+
+答：每小時執行一次（非交易時段可跳過）
+
+---
+
+### Q4. 漲幅計算基準
+
+yfinance 提供：
+- `previousClose`（昨日收盤價）
+- 今日即時 `close`（盤中最新價）
+
+**漲幅 = (今日即時價 - 昨日收盤) / 昨日收盤 × 100%**，確認這樣算？
+
+答：應該有regularMarketChangePercent 這欄位 ,如果有請用這欄位,沒有的話,漲幅 = (今日即時價 - 昨日收盤) / 昨日收盤 × 100%
+
+---
+
+### Q5. 成交金額「盤中比例換算」定義
+
+條件 B：今日累計成交金額 > 1 億，**或盤中比例換算**。  
+盤中比例換算的意思是：  
+例如現在才過了 1/3 交易時間，成交金額已有 4000 萬，換算全日預估 = 1.2 億 > 1 億，也算符合。
+
+**待確認：是否要做此換算？還是直接用當下累計金額比對 1 億即可？**
+
+答：當下累計金額比對 1 億
+
+---
+
+### Q6. yfinance 分批大小
+
+`stock_master` 約有幾百至千支股票，yfinance 支援一次傳入多個 ticker（空格分隔）。  
+建議每批 100 支，避免 timeout 或被限速。
+
+**待確認：批次大小用 100 可以嗎？**
+
+答：可以
+
+---
+
+### Q7. `topic_score` 計算方式
+
+資料表有 `topic_score` 欄位，需求未定義。
+
+**待確認：要先存 NULL 跳過？還是有計算邏輯？**  
+建議：`平均漲幅 × 符合家數`（例：4.2% × 3 家 = 12.6）
+
+答：先忽略
+
+---
+
+### Q8. `stock_list` JSON 格式
+
+**待確認：只存代號，還是連名稱、漲幅一起存？**
+
+```json
+// 只代號（精簡）
+["2330", "2317", "2454"]
+
+// 含名稱與漲幅（前端顯示不需再查表）
+[{"id": "2330", "name": "台積電", "change_pct": 4.2}, ...]
+```
+
+答：只存代號,且最多只為 三個代號
+
+---
+
+### Q9. `reason` JSON 存什麼
+
+**待確認：存什麼內容？** 建議：
+
+```json
+{
+  "avg_change_pct": 4.2,
+  "total_volume": 15000,
+  "total_value": 120000000
+}
+```
+
+答：先忽略
+
+---
+
+### Q10. 「3、4 家」門檻
+
+**待確認：同一產業符合條件的公司 >= 3 家才觸發，正確嗎？**
+
+答：同一產業符合條件的公司 >= 3 家才觸發
+
+---
+
+## 技術確認（Claude 自行決定，供紀錄）
+
+### T1. `trend` 欄位 NOT NULL → 預設存 `''`
+資料表 `trend` 為 NOT NULL，用戶說「先不用管」，實作上一律存空字串 `''`。
+
+### T2. yfinance 批次策略（1,925 支股票）
+- 使用 `yf.download(tickers, period="2d")` 批次下載（每批 100 支，共約 20 次呼叫）
+- `regularMarketChangePercent` 在 `download()` 不存在，改用：  
+  `change_pct = (today_close - yesterday_close) / yesterday_close × 100`
+- 預估執行時間：40–100 秒，符合每小時一次的需求
+
+### T3. 刪除今日資料邏輯
+每次執行前：
+```sql
+DELETE FROM market_topic_snapshot WHERE DATE(snapshot_time) = CURDATE()
+```
+
+### T4. 非交易時段判斷
+台灣交易時段：週一至週五 09:00–13:30（台灣時間）。  
+非交易時段（週末 / 非交易時間）直接 skip，不呼叫 yfinance。
+
+### T5. stock_list JSON 格式
+存漲幅前 3 名的股票代號（不含後綴），最多 3 個：
+```json
+["2330", "2317", "2454"]
+```
+
+---
+
+## 實作狀態
+
+- [ ] 建立 `market_topic_importer.py`
+- [ ] 串接 yfinance 批次下載
+- [ ] 篩選邏輯（漲幅 >= 3%、產業 >= 3 家、成交量或金額門檻）
+- [ ] 寫入 `market_topic_snapshot`
+
+
+
+

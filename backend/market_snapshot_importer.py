@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 import json
 from datetime import datetime, date
@@ -16,7 +17,11 @@ from models import MarketSnapshot
 
 FINMIND_TOKEN = os.getenv("FINMIND_TOKEN", "")
 FINMIND_API = "https://api.finmindtrade.com/api/v4/data"
-TWSE_OPENAPI_URL = "https://openapi.twse.com.tw/v1/exchangeReport/MI_INDEX_GA"
+TWSE_OPENAPI_BASE = "https://www.twse.com.tw/exchangeReport/MI_INDEX"
+TWSE_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "Referer": "https://www.twse.com.tw/zh/trading/exchange/MI_INDEX.html",
+}
 
 
 def _get(dataset: str, params: dict) -> list:
@@ -69,32 +74,77 @@ def _fetch_institutional(today: str) -> Tuple[int, int, int]:
     return foreign, investment, dealer_self + dealer_hedging
 
 
-def _fetch_twse_openapi_counts() -> Tuple[int, int, int, int]:
+def _fetch_twse_openapi_counts(target_date: str = None) -> Tuple[int, int, int, int]:
     """
-    1. 新增：從台灣證交所 OpenAPI 獲取免費的漲跌停與上漲下跌家數
-    回傳: (上漲家數, 下跌家數, 漲停家數, 跌停家數)
+    從證交所 MI_INDEX OpenAPI 取得漲跌家數（僅計算「股票」，排除 ETF/權證）。
+
+    API 回傳結構：data["tables"] 為列表，其中 title="漲跌證券數合計" 的表格：
+      fields: ['類型', '整體市場', '股票']
+      data:   [['上漲(漲停)', '9,333(454)', '808(42)'],
+               ['下跌(跌停)', '2,154(121)', '203(4)'], ...]
+    值格式 "808(42)" = 總家數808，其中漲停42。
+
+    target_date: 格式 'YYYYMMDD'，預設今日。
+    回傳: (total_up, total_down, limit_up, limit_down)
     """
+    if target_date is None:
+        target_date = date.today().strftime("%Y%m%d")
+
+    url = f"{TWSE_OPENAPI_BASE}?response=json&type=MS&date={target_date}"
+
+    def parse_count_pair(text: str):
+        """解析 '808(42)' → (808, 42)；純數字 '399' → (399, 0)"""
+        text = text.replace(",", "").strip()
+        m = re.match(r"(\d+)\((\d+)\)", text)
+        if m:
+            return int(m.group(1)), int(m.group(2))
+        try:
+            return int(text), 0
+        except ValueError:
+            return 0, 0
+
     try:
-        resp = requests.get(TWSE_OPENAPI_URL, timeout=15)
-        resp.raise_for_status()
-        data = resp.json()
-        
-        if data and isinstance(data, list):
-            # 證交所 OpenAPI 回傳的是一個陣列，通常第一筆就是當日統計
-            row = data[0]
-            up_count = int(row.get("UpNum", 0))     # 上漲家數 (不含漲停)
-            down_count = int(row.get("DnNum", 0))   # 下跌家數 (不含跌停)
-            limit_up = int(row.get("UpLmtNum", 0))   # 漲停家數
-            limit_down = int(row.get("DNLmtNum", 0)) # 跌停家術
-            
-            # 實務上通常把「漲停」也算進「總上漲家數」中，視覺化比較好看
-            total_up = up_count + limit_up
-            total_down = down_count + limit_down
-            
-            return total_up, total_down, limit_up, limit_down
+        response = requests.get(url, headers=TWSE_HEADERS, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+
+        if data.get("stat") != "OK":
+            print(f"[TWSE] stat={data.get('stat')}，{target_date} 非交易日或資料尚未更新。")
+            return 0, 0, 0, 0
+
+        # 在 tables 列表中找 title 含「漲跌」的表格
+        tables = data.get("tables", [])
+        target_table = None
+        for t in tables:
+            if "漲跌" in t.get("title", ""):
+                target_table = t.get("data", [])
+                break
+
+        if not target_table:
+            print("[TWSE] 找不到漲跌證券數表格。")
+            for t in tables:
+                if t.get("title"):
+                    print(f"  title={t['title']!r}, fields={t.get('fields')}")
+            return 0, 0, 0, 0
+
+        # 欄位：['類型', '整體市場', '股票']，取 index=2（股票）
+        stock_col = 2
+        total_up = limit_up = total_down = limit_down = 0
+
+        for row in target_table:
+            if not row or len(row) <= stock_col:
+                continue
+            category = str(row[0]).strip()
+            if "上漲" in category:
+                total_up, limit_up = parse_count_pair(row[stock_col])
+            elif "下跌" in category:
+                total_down, limit_down = parse_count_pair(row[stock_col])
+
+        return total_up, total_down, limit_up, limit_down
+
     except Exception as e:
-        print(f"警告：無法從證交所 OpenAPI 取得家數資料: {e}", file=sys.stderr)
-    
+        print(f"[TWSE] 抓取失敗: {e}")
+
     return 0, 0, 0, 0
 
 
@@ -141,16 +191,25 @@ def _fetch_retail_confidence(today: str) -> float:
     return 0.0
 
 
-def fetch_and_import(db: Session) -> dict:
-    today = date.today().isoformat()
-    now = datetime.now()
+def fetch_and_import(db: Session, target_date: str = None) -> dict:
+    """
+    target_date: 'YYYY-MM-DD' 格式，預設今日。
+    """
+    if target_date:
+        today = target_date
+        twse_date = target_date.replace("-", "")
+        now = datetime.strptime(target_date, "%Y-%m-%d")
+    else:
+        today = date.today().isoformat()
+        twse_date = date.today().strftime("%Y%m%d")
+        now = datetime.now()
 
     # 1. 抓取原本的基礎大盤與法人資料
     total_volume = _fetch_total_volume(today)
     foreign_buy, investment_buy, dealer_buy = _fetch_institutional(today)
 
     # 2. 抓取新追加的 OpenAPI 家數與 FinMind 情緒指標
-    up_count, down_count, limit_up, limit_down = _fetch_twse_openapi_counts()
+    up_count, down_count, limit_up, limit_down = _fetch_twse_openapi_counts(twse_date)
     speculation_index = _fetch_speculation_index(today, total_volume)
     retail_confidence = _fetch_retail_confidence(today)
 
@@ -194,10 +253,13 @@ def fetch_and_import(db: Session) -> dict:
 if __name__ == "__main__":
     from database import SessionLocal, Base, engine
 
+    # 可傳入日期參數，例如：python market_snapshot_importer.py 2026-06-12
+    cli_date = sys.argv[1] if len(sys.argv) > 1 else None
+
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     try:
-        result = fetch_and_import(db)
+        result = fetch_and_import(db, target_date=cli_date)
         print(json.dumps(result, ensure_ascii=False, indent=2))
     except Exception as e:
         print(f"ERROR: {e}", file=sys.stderr)

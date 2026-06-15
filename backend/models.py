@@ -1,7 +1,8 @@
 from __future__ import annotations
 from datetime import date, datetime
 from typing import Optional
-from sqlalchemy import BigInteger, Date, Float, Integer, VARCHAR, DateTime, func
+from typing import Any
+from sqlalchemy import BigInteger, Date, Float, Integer, VARCHAR, DateTime, JSON, func
 from sqlalchemy.dialects.mysql import TINYINT
 from sqlalchemy.orm import Mapped, mapped_column
 from database import Base
@@ -17,6 +18,23 @@ class StockMaster(Base):
     is_active: Mapped[int] = mapped_column(TINYINT, nullable=False, default=1)
     created_at: Mapped[datetime] = mapped_column(
         DateTime, nullable=False, server_default=func.now()
+    )
+
+
+class MarketTopicSnapshot(Base):
+    """對應 DB 的 market_topic_snapshot 資料表。"""
+
+    __tablename__ = "market_topic_snapshot"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    snapshot_time: Mapped[datetime] = mapped_column(DateTime, nullable=False)
+    topic_name: Mapped[str] = mapped_column(VARCHAR(50), nullable=False)
+    trend: Mapped[str] = mapped_column(VARCHAR(20), nullable=False, default="")
+    topic_score: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
+    stock_list: Mapped[Any] = mapped_column(JSON, nullable=False)
+    reason: Mapped[Optional[Any]] = mapped_column(JSON, nullable=True)
+    created_at: Mapped[Optional[datetime]] = mapped_column(
+        DateTime, nullable=True, server_default=func.now()
     )
 
 
