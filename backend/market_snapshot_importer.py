@@ -2,7 +2,7 @@ import os
 import re
 import sys
 import json
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from typing import Tuple
 from pathlib import Path
 
@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).parent / ".env")
 
 import requests
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from models import MarketSnapshot
@@ -148,22 +149,48 @@ def _fetch_twse_openapi_counts(target_date: str = None) -> Tuple[int, int, int, 
     return 0, 0, 0, 0
 
 
-def _fetch_speculation_index(today: str, total_volume: int) -> float:
+def _fetch_speculation_index(today: str, total_volume: int = 0) -> float:
     """
-    2. 新增：市場投機度（當沖成交量 / 大盤總成交量）
+    市場投機度（當日沖銷交易總成交股數占市場比重%）
+    資料來源：TWSE TWTB4U — 當日沖銷交易統計資訊（盤後更新）
     """
-    if total_volume == 0:
-        return 0.0
+    twse_date = today.replace("-", "")
+    url = f"https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date={twse_date}"
     try:
-        # 抓取當日當沖合計資料
-        rows = _get("TaiwanStockDayTrading", {"start_date": today, "end_date": today})
-        if rows:
-            # 欄位 "BuyVolume" 代表當沖買進股數，乘以 2 通常代表當沖總成交量
-            # 或是直接取其中一邊的股數（因為當沖是買賣兩邊），對比大盤總量
-            day_trade_vol = int(rows[-1].get("BuyVolume", 0))
-            # 計算當沖量佔大盤比例 (百分比)
-            speculation_ratio = round((day_trade_vol / total_volume) * 100, 2)
-            return speculation_ratio
+        resp = requests.get(url, headers=TWSE_HEADERS, timeout=10)
+        resp.raise_for_status()
+        data = resp.json()
+
+        if data.get("stat") != "OK":
+            print(f"[TWTB4U] stat={data.get('stat')}，{twse_date} 非交易日或資料尚未更新。")
+            return 0.0
+
+        tables = data.get("tables", [])
+        if not tables:
+            return 0.0
+
+        # table[0]：當日沖銷交易統計資訊
+        # fields: ['當日沖銷交易總成交股數', '當日沖銷交易總成交股數占市場比重%', ...]
+        stat_table = tables[0]
+        fields = stat_table.get("fields", [])
+        rows = stat_table.get("data", [])
+
+        if not rows:
+            print(f"[TWTB4U] {twse_date} 無統計資料（可能尚未更新）。")
+            return 0.0
+
+        # 找「成交股數占市場比重」欄位索引
+        ratio_idx = next(
+            (i for i, f in enumerate(fields) if "成交股數" in f and "比重" in f),
+            None,
+        )
+        if ratio_idx is None:
+            print(f"[TWTB4U] 找不到比重欄位，fields={fields}")
+            return 0.0
+
+        ratio_str = str(rows[0][ratio_idx]).replace(",", "").strip()
+        return round(float(ratio_str), 2)
+
     except Exception as e:
         print(f"警告：無法取得當沖投機度資料: {e}", file=sys.stderr)
     return 0.0
@@ -171,19 +198,15 @@ def _fetch_speculation_index(today: str, total_volume: int) -> float:
 
 def _fetch_retail_confidence(today: str) -> float:
     """
-    3. 新增：散戶信心指數（使用整體市場融資增減金額）
-    註：此為盤後資料（約下午 9 點更新），盤中會維持 0 或取到上一日的增減
+    散戶信心指數（整體市場融資增減金額，換算億元）
+    此為盤後資料（約下午 9 點更新），盤中呼叫會回傳 0.0
     """
     try:
         rows = _get("TaiwanStockTotalMarginPurchaseShortSale", {"start_date": today, "end_date": today})
         if rows:
-            # MarginPurchaseTodayBalance: 今日融資餘額
-            # MarginPurchaseYesterdayBalance: 昨日融資餘額
             row = rows[-1]
             today_bal = int(row.get("MarginPurchaseTodayBalance", 0))
             yesterday_bal = int(row.get("MarginPurchaseYesterdayBalance", 0))
-            
-            # 融資增減金額（單位通常是元，換算成「億元」比較好讀）
             margin_diff_in_yi = (today_bal - yesterday_bal) / 100_000_000
             return round(margin_diff_in_yi, 2)
     except Exception as e:
@@ -209,27 +232,55 @@ def fetch_and_import(db: Session, target_date: str = None) -> dict:
     foreign_buy, investment_buy, dealer_buy = _fetch_institutional(today)
 
     # 2. 抓取新追加的 OpenAPI 家數與 FinMind 情緒指標
+    yesterday = (date.fromisoformat(today) - timedelta(days=1)).isoformat()
     up_count, down_count, limit_up, limit_down = _fetch_twse_openapi_counts(twse_date)
-    speculation_index = _fetch_speculation_index(today, total_volume)
-    retail_confidence = _fetch_retail_confidence(today)
+    speculation_index = _fetch_speculation_index(yesterday, total_volume)
+    retail_confidence = _fetch_retail_confidence(yesterday)
 
-    # 3. 寫入資料庫
-    snapshot = MarketSnapshot(
-        snapshot_time=now,
-        total_volume=total_volume,
-        foreign_buy=foreign_buy,
-        investment_buy=investment_buy,
-        dealer_buy=dealer_buy,
-        up_count=up_count,          # 補上真實數據
-        down_count=down_count,      # 補上真實數據
-        limit_up=limit_up,          # 補上真實數據
-        limit_down=limit_down,      # 補上真實數據
-        market_score=0,
-        trend="",
-        source_status="SUCCESS",
-    )
 
-    db.add(snapshot)
+    # 3. 寫入資料庫（同天同小時則覆蓋；否則新增，id 從 1 開始遞增）
+    existing = db.query(MarketSnapshot).filter(
+        func.date(MarketSnapshot.snapshot_time) == date.fromisoformat(today),
+        func.hour(MarketSnapshot.snapshot_time) == now.hour,
+    ).first()
+
+    if existing:
+        existing.snapshot_time    = now
+        existing.total_volume     = total_volume
+        existing.foreign_buy      = foreign_buy
+        existing.investment_buy   = investment_buy
+        existing.dealer_buy       = dealer_buy
+        existing.up_count         = up_count
+        existing.down_count       = down_count
+        existing.limit_up         = limit_up
+        existing.limit_down       = limit_down
+        existing.market_score     = 0
+        existing.trend            = ""
+        existing.source_status    = "SUCCESS"
+        existing.speculation_index    = speculation_index
+        existing.retail_confidence    = retail_confidence
+        snapshot = existing
+    else:
+        max_id = db.query(func.max(MarketSnapshot.id)).scalar() or 0
+        snapshot = MarketSnapshot(
+            id=max_id + 1,
+            snapshot_time=now,
+            total_volume=total_volume,
+            foreign_buy=foreign_buy,
+            investment_buy=investment_buy,
+            dealer_buy=dealer_buy,
+            up_count=up_count,
+            down_count=down_count,
+            limit_up=limit_up,
+            limit_down=limit_down,
+            market_score=0,
+            trend="",
+            source_status="SUCCESS",
+            speculation_index=speculation_index,
+            retail_confidence=retail_confidence
+        )
+        db.add(snapshot)
+
     db.commit()
     db.refresh(snapshot)
 

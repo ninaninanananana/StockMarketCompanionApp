@@ -48,7 +48,7 @@ class MarketSnapshot(Base):
 
     # AI 分析結果（由其他模組填寫，importer 留預設值）
     market_score: Mapped[float] = mapped_column(Float, nullable=False, default=0)
-    trend: Mapped[str] = mapped_column(VARCHAR(20), nullable=False, default="")
+    trend: Mapped[str] = mapped_column(VARCHAR(100), nullable=False, default="")
 
     # 漲跌家數（TODO: FinMind register 帳號無法一次取全部個股，需升級或改換資料源）
     up_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
@@ -66,6 +66,8 @@ class MarketSnapshot(Base):
 
     analysis_version: Mapped[str] = mapped_column(VARCHAR(20), nullable=False, default="v1")
     source_status: Mapped[str] = mapped_column(VARCHAR(20), nullable=False, default="SUCCESS")
+    speculation_index: Mapped[str] = mapped_column(Float, nullable=False,default=0)
+    retail_confidence: Mapped[str] = mapped_column(Float, nullable=False, default=0)
     created_at: Mapped[datetime] = mapped_column(
         DateTime, nullable=False, server_default=func.now()
     )

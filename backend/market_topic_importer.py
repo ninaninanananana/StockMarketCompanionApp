@@ -211,9 +211,10 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
 
     print(f"[TopicImporter] 熱門主題: {len(hot_topics)} 個")
 
-    # 5. 刪除今日舊資料
+    # 5. 刪除同天同小時的舊資料（保留其他小時的歷史快照）
     db.execute(
-        text("DELETE FROM market_topic_snapshot WHERE DATE(snapshot_time) = CURDATE()")
+        text("DELETE FROM market_topic_snapshot WHERE DATE(snapshot_time) = CURDATE() AND HOUR(snapshot_time) = :hour"),
+        {"hour": now.hour},
     )
 
     # 6. 寫入新資料（依平均漲幅大到小順序寫入，id 即代表排名）
