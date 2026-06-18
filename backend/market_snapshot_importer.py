@@ -229,10 +229,10 @@ def fetch_and_import(db: Session, target_date: str = None) -> dict:
 
     # 1. 抓取原本的基礎大盤與法人資料
     total_volume = _fetch_total_volume(today)
-    foreign_buy, investment_buy, dealer_buy = _fetch_institutional(today)
+    yesterday = (date.fromisoformat(today) - timedelta(days=1)).isoformat()
+    foreign_buy, investment_buy, dealer_buy = _fetch_institutional(yesterday)
 
     # 2. 抓取新追加的 OpenAPI 家數與 FinMind 情緒指標
-    yesterday = (date.fromisoformat(today) - timedelta(days=1)).isoformat()
     up_count, down_count, limit_up, limit_down = _fetch_twse_openapi_counts(twse_date)
     speculation_index = _fetch_speculation_index(yesterday, total_volume)
     retail_confidence = _fetch_retail_confidence(yesterday)

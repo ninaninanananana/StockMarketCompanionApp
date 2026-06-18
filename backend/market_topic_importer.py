@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore")
 import yfinance as yf
 import pandas as pd
 from sqlalchemy.orm import Session
-from sqlalchemy import text
+from sqlalchemy import func, text
 
 from models import MarketTopicSnapshot
 from database import SessionLocal, Base, engine
@@ -211,13 +211,8 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
 
     print(f"[TopicImporter] 熱門主題: {len(hot_topics)} 個")
 
-    # 5. 刪除同天同小時的舊資料（保留其他小時的歷史快照）
-    db.execute(
-        text("DELETE FROM market_topic_snapshot WHERE DATE(snapshot_time) = CURDATE() AND HOUR(snapshot_time) = :hour"),
-        {"hour": now.hour},
-    )
-
-    # 6. 寫入新資料（依平均漲幅大到小順序寫入，id 即代表排名）
+    # 5. 寫入新資料（依平均漲幅大到小順序寫入，id 即代表排名）
+    next_id = (db.query(func.max(MarketTopicSnapshot.id)).scalar() or 0) + 1
     inserted = []
     for industry, members in hot_topics:
         top3 = sorted(members, key=lambda x: x["change_pct"], reverse=True)[:TOP_N]
@@ -227,6 +222,7 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
         ]
 
         db.add(MarketTopicSnapshot(
+            id=next_id,
             snapshot_time=now,
             topic_name=industry,
             trend="",
@@ -234,6 +230,7 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
             stock_list=stock_list,
             reason=None,
         ))
+        next_id += 1
         avg_chg = round(sum(s["change_pct"] for s in members) / len(members), 2)
         inserted.append({
             "topic_name":  industry,
