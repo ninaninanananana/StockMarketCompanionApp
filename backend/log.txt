@@ -114,3 +114,946 @@ import_market_snapshot 執行結束
 import_market_topics 執行開始
 {'skipped': True, 'reason': '非交易時段'}
 import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-18 17:30:02.981873+08:00
+import_market_snapshot 執行開始
+{'id': 10, 'snapshot_time': '2026-06-18T17:30:02.982014', 'total_volume': 16091861, 'foreign_buy': -20683737771, 'investment_buy': -206062001, 'dealer_buy': -4268862356, 'up_count': 574, 'down_count': 395, 'limit_up': 58, 'limit_down': 3, 'speculation_index': '25.72%', 'retail_confidence': '0.0 億', 'message': '市場快照已成功更新並寫入資料庫'}
+import_market_snapshot 執行結束
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-22 09:30:03.472613+08:00
+import_market_snapshot 略過（目前 9 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1909 支股票資料
+[TopicImporter] 符合條件: 149 支
+[TopicImporter] 熱門主題: 8 個
+[TopicImporter] 寫入完成，共 8 筆主題
+{'snapshot_time': '2026-06-22T09:30:03.472730', 'stocks_fetched': 1909, 'qualified_stocks': 149, 'hot_topics_count': 8, 'topics': [{'topic_name': '電腦及週邊設備業', 'stock_count': 8, 'avg_change': 31.31, 'top3': ['6669 緯穎', '2305 全友', '6831 邁科']}, {'topic_name': '半導體業', 'stock_count': 72, 'avg_change': 7.05, 'top3': ['2481 強茂', '6202 盛群', '6693 廣閎科']}, {'topic_name': '電子零組件業', 'stock_count': 21, 'avg_change': 6.7, 'top3': ['5340 建榮', '2316 楠梓電', '2483 百容']}, {'topic_name': '光電業', 'stock_count': 14, 'avg_change': 5.91, 'top3': ['3615 安可', '2409 友達', '6116 彩晶']}, {'topic_name': '電機機械', 'stock_count': 5, 'avg_change': 5.67, 'top3': ['8255 朋程', '1560 中砂', '4576 大銀微系統']}, {'topic_name': '電子通路業', 'stock_count': 3, 'avg_change': 5.29, 'top3': ['5434 崇越', '8096 擎亞', '8070 長華*']}, {'topic_name': '其他電子業', 'stock_count': 6, 'avg_change': 5.18, 'top3': ['2464 盟立', '3131 弘塑', '3587 閎康']}, {'topic_name': '航運業', 'stock_count': 3, 'avg_change': 4.66, 'top3': ['2634 漢翔', '6753 龍德造船', '2645 長榮航太']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-22 10:30:03.050161+08:00
+import_market_snapshot 略過（目前 10 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1914 支股票資料
+[TopicImporter] 符合條件: 225 支
+[TopicImporter] 熱門主題: 14 個
+[TopicImporter] 寫入完成，共 14 筆主題
+{'snapshot_time': '2026-06-22T10:30:03.050267', 'stocks_fetched': 1914, 'qualified_stocks': 225, 'hot_topics_count': 14, 'topics': [{'topic_name': '電腦及週邊設備業', 'stock_count': 8, 'avg_change': 32.22, 'top3': ['6669 緯穎', '2399 映泰', '6831 邁科']}, {'topic_name': '化學工業', 'stock_count': 4, 'avg_change': 7.36, 'top3': ['4716 大立', '1711 永光', '1727 中華化']}, {'topic_name': '半導體業', 'stock_count': 89, 'avg_change': 7.27, 'top3': ['2351 順德', '2481 強茂', '3094 聯傑']}, {'topic_name': '電子零組件業', 'stock_count': 42, 'avg_change': 7.08, 'top3': ['1595 川寶', '5340 建榮', '7795 長廣']}, {'topic_name': '電機機械', 'stock_count': 5, 'avg_change': 6.98, 'top3': ['8255 朋程', '4526 東台', '4576 大銀微系統']}, {'topic_name': '光電業', 'stock_count': 20, 'avg_change': 6.84, 'top3': ['2409 友達', '3615 安可', '2429 銘旺科']}, {'topic_name': '生技醫療業', 'stock_count': 3, 'avg_change': 6.76, 'top3': ['6919 康霈*', '6446 藥華藥', '6861 睿生光電']}, {'topic_name': '塑膠工業', 'stock_count': 5, 'avg_change': 6.33, 'top3': ['1303 南亞', '1310 台苯', '1314 中石化']}, {'topic_name': '其他業', 'stock_count': 6, 'avg_change': 6.28, 'top3': ['8033 雷虎', '2221 大甲', '6585 鼎基']}, {'topic_name': '通信網路業', 'stock_count': 7, 'avg_change': 5.93, 'top3': ['2498 宏達電', '6109 亞元', '4906 正文']}, {'topic_name': '觀光餐旅', 'stock_count': 3, 'avg_change': 5.76, 'top3': ['3522 御嵿', '2755 揚秦', '5364 力麗店']}, {'topic_name': '其他電子業', 'stock_count': 10, 'avg_change': 5.18, 'top3': ['7792 安葆', '6830 汎銓', '5452 佶優']}, {'topic_name': '電子通路業', 'stock_count': 4, 'avg_change': 4.94, 'top3': ['5434 崇越', '6265 方土昶', '8072 陞泰']}, {'topic_name': '綠能環保', 'stock_count': 3, 'avg_change': 4.07, 'top3': ['8422 可寧衛*', '6944 兆聯實業', '8476 台境*']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-22 11:30:04.133666+08:00
+import_market_snapshot 略過（目前 11 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1916 支股票資料
+[TopicImporter] 符合條件: 257 支
+[TopicImporter] 熱門主題: 15 個
+[TopicImporter] 寫入完成，共 15 筆主題
+{'snapshot_time': '2026-06-22T11:30:04.133771', 'stocks_fetched': 1916, 'qualified_stocks': 257, 'hot_topics_count': 15, 'topics': [{'topic_name': '電腦及週邊設備業', 'stock_count': 9, 'avg_change': 30.13, 'top3': ['6669 緯穎', '2301 光寶科', '2305 全友']}, {'topic_name': '半導體業', 'stock_count': 94, 'avg_change': 7.35, 'top3': ['2351 順德', '2481 強茂', '3094 聯傑']}, {'topic_name': '光電業', 'stock_count': 22, 'avg_change': 6.99, 'top3': ['3149 正達', '2409 友達', '8064 東捷']}, {'topic_name': '通信網路業', 'stock_count': 6, 'avg_change': 6.87, 'top3': ['4906 正文', '6109 亞元', '2498 宏達電']}, {'topic_name': '化學工業', 'stock_count': 6, 'avg_change': 6.86, 'top3': ['4716 大立', '1711 永光', '1727 中華化']}, {'topic_name': '電子零組件業', 'stock_count': 46, 'avg_change': 6.85, 'top3': ['1595 川寶', '5340 建榮', '7795 長廣']}, {'topic_name': '綠能環保', 'stock_count': 6, 'avg_change': 6.54, 'top3': ['6806 森崴能源', '7715 裕山', '8476 台境*']}, {'topic_name': '航運業', 'stock_count': 3, 'avg_change': 6.4, 'top3': ['6753 龍德造船', '2630 亞航', '2634 漢翔']}, {'topic_name': '電機機械', 'stock_count': 9, 'avg_change': 6.39, 'top3': ['8255 朋程', '4526 東台', '2066 世德']}, {'topic_name': '其他業', 'stock_count': 7, 'avg_change': 6.32, 'top3': ['2221 大甲', '8033 雷虎', '6585 鼎基']}, {'topic_name': '其他電子業', 'stock_count': 12, 'avg_change': 6.1, 'top3': ['7792 安葆', '3518 柏騰', '6830 汎銓']}, {'topic_name': '電子通路業', 'stock_count': 8, 'avg_change': 6.09, 'top3': ['8084 巨虹', '5434 崇越', '3028 增你強']}, {'topic_name': '塑膠工業', 'stock_count': 6, 'avg_change': 5.79, 'top3': ['1303 南亞', '1310 台苯', '1314 中石化']}, {'topic_name': '鋼鐵工業', 'stock_count': 4, 'avg_change': 5.71, 'top3': ['2033 佳大', '2012 春雨', '2030 彰源']}, {'topic_name': '生技醫療業', 'stock_count': 4, 'avg_change': 5.04, 'top3': ['6919 康霈*', '7799 禾榮科', '6861 睿生光電']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+
+10 Failed downloads:
+['8182.TWO', '7786.TW', '7782.TWO', '8107.TWO', '8255.TWO', '8011.TW', '7788.TW', '7791.TW', '8092.TWO', '8099.TWO']: TypeError("'NoneType' object is not subscriptable")
+開始執行
+2026-06-22 12:30:02.730206+08:00
+import_market_snapshot 略過（目前 12 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1908 支股票資料
+[TopicImporter] 符合條件: 259 支
+[TopicImporter] 熱門主題: 15 個
+(pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([Errno 60] Operation timed out)')
+[SQL: SELECT max(market_topic_snapshot.id) AS max_1 
+FROM market_topic_snapshot]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-22 13:30:01.840618+08:00
+import_market_snapshot 略過（目前 13 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-22 14:30:01.982965+08:00
+import_market_snapshot 略過（目前 14 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-22 15:30:02.438270+08:00
+import_market_snapshot 略過（目前 15 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-22 16:30:02.775297+08:00
+import_market_snapshot 略過（目前 16 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-22 17:30:02.414972+08:00
+import_market_snapshot 執行開始
+[TWTB4U] 20260621 無統計資料（可能尚未更新）。
+{'id': 11, 'snapshot_time': '2026-06-22T17:30:02.415098', 'total_volume': 15524158, 'foreign_buy': 0, 'investment_buy': 0, 'dealer_buy': 0, 'up_count': 523, 'down_count': 459, 'limit_up': 69, 'limit_down': 4, 'speculation_index': '0.0%', 'retail_confidence': '0.0 億', 'message': '市場快照已成功更新並寫入資料庫'}
+import_market_snapshot 執行結束
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-23 09:30:02.457468+08:00
+import_market_snapshot 略過（目前 9 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1914 支股票資料
+[TopicImporter] 符合條件: 71 支
+[TopicImporter] 熱門主題: 5 個
+[TopicImporter] 寫入完成，共 5 筆主題
+{'snapshot_time': '2026-06-23T09:30:02.457572', 'stocks_fetched': 1914, 'qualified_stocks': 71, 'hot_topics_count': 5, 'topics': [{'topic_name': '其他電子業', 'stock_count': 4, 'avg_change': 7.11, 'top3': ['3465 進泰電子', '4577 達航科技', '2474 可成']}, {'topic_name': '半導體業', 'stock_count': 41, 'avg_change': 6.52, 'top3': ['3675 德微', '6907 雅特力-KY', '2481 強茂']}, {'topic_name': '光電業', 'stock_count': 5, 'avg_change': 6.03, 'top3': ['2426 鼎元', '3615 安可', '3230 錦明']}, {'topic_name': '電子零組件業', 'stock_count': 7, 'avg_change': 6.0, 'top3': ['2316 楠梓電', '6715 嘉基', '8046 南電']}, {'topic_name': '生技醫療業', 'stock_count': 3, 'avg_change': 4.43, 'top3': ['6472 保瑞', '6620 漢達', '6446 藥華藥']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-23 10:30:03.323528+08:00
+import_market_snapshot 略過（目前 10 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1914 支股票資料
+[TopicImporter] 符合條件: 61 支
+[TopicImporter] 熱門主題: 4 個
+[TopicImporter] 寫入完成，共 4 筆主題
+{'snapshot_time': '2026-06-23T10:30:03.323672', 'stocks_fetched': 1914, 'qualified_stocks': 61, 'hot_topics_count': 4, 'topics': [{'topic_name': '生技醫療業', 'stock_count': 7, 'avg_change': 8.31, 'top3': ['6661 威健生技', '7799 禾榮科', '6615 慧智']}, {'topic_name': '光電業', 'stock_count': 9, 'avg_change': 7.34, 'top3': ['6226 光鼎', '6168 宏齊', '3523 迎輝']}, {'topic_name': '半導體業', 'stock_count': 26, 'avg_change': 7.31, 'top3': ['8024 佑華', '6907 雅特力-KY', '2481 強茂']}, {'topic_name': '電子零組件業', 'stock_count': 6, 'avg_change': 6.85, 'top3': ['5464 霖宏', '6715 嘉基', '6538 倉和']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['5469.TW']: TypeError("'NoneType' object is not subscriptable")
+開始執行
+2026-06-23 11:31:48.979071+08:00
+import_market_snapshot 略過（目前 11 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1914 支股票資料
+[TopicImporter] 符合條件: 84 支
+[TopicImporter] 熱門主題: 7 個
+[TopicImporter] 寫入完成，共 7 筆主題
+{'snapshot_time': '2026-06-23T11:31:48.979193', 'stocks_fetched': 1914, 'qualified_stocks': 84, 'hot_topics_count': 7, 'topics': [{'topic_name': '綠能環保', 'stock_count': 3, 'avg_change': 8.23, 'top3': ['8438 昶昕', '6806 森崴能源', '6887 寶綠特-KY']}, {'topic_name': '生技醫療業', 'stock_count': 8, 'avg_change': 8.01, 'top3': ['6661 威健生技', '7799 禾榮科', '6615 慧智']}, {'topic_name': '半導體業', 'stock_count': 29, 'avg_change': 7.71, 'top3': ['2369 菱生', '6525 捷敏-KY', '8024 佑華']}, {'topic_name': '電子零組件業', 'stock_count': 6, 'avg_change': 7.7, 'top3': ['5464 霖宏', '6538 倉和', '6715 嘉基']}, {'topic_name': '通信網路業', 'stock_count': 3, 'avg_change': 7.19, 'top3': ['3672 康聯訊', '4908 前鼎', '3704 合勤控']}, {'topic_name': '光電業', 'stock_count': 14, 'avg_change': 6.97, 'top3': ['6226 光鼎', '6168 宏齊', '4956 光鋐']}, {'topic_name': '其他電子業', 'stock_count': 4, 'avg_change': 6.14, 'top3': ['4577 達航科技', '6735 美達科技', '2482 連宇']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+1 Failed download:
+['3717.TW']: TypeError("'NoneType' object is not subscriptable")
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-23 12:30:02.846857+08:00
+import_market_snapshot 略過（目前 12 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1916 支股票資料
+[TopicImporter] 符合條件: 84 支
+[TopicImporter] 熱門主題: 7 個
+[TopicImporter] 寫入完成，共 7 筆主題
+{'snapshot_time': '2026-06-23T12:30:02.846967', 'stocks_fetched': 1916, 'qualified_stocks': 84, 'hot_topics_count': 7, 'topics': [{'topic_name': '電子零組件業', 'stock_count': 5, 'avg_change': 8.2, 'top3': ['5464 霖宏', '6538 倉和', '6715 嘉基']}, {'topic_name': '光電業', 'stock_count': 13, 'avg_change': 8.18, 'top3': ['6226 光鼎', '3066 李洲', '6168 宏齊']}, {'topic_name': '生技醫療業', 'stock_count': 8, 'avg_change': 8.08, 'top3': ['6661 威健生技', '7799 禾榮科', '6615 慧智']}, {'topic_name': '半導體業', 'stock_count': 30, 'avg_change': 7.98, 'top3': ['2369 菱生', '3675 德微', '8024 佑華']}, {'topic_name': '綠能環保', 'stock_count': 3, 'avg_change': 7.47, 'top3': ['8438 昶昕', '6806 森崴能源', '6887 寶綠特-KY']}, {'topic_name': '其他電子業', 'stock_count': 4, 'avg_change': 6.14, 'top3': ['4577 達航科技', '6735 美達科技', '3465 進泰電子']}, {'topic_name': '通信網路業', 'stock_count': 4, 'avg_change': 5.85, 'top3': ['3672 康聯訊', '4908 前鼎', '6218 豪勉']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-23 13:30:03.174851+08:00
+import_market_snapshot 略過（目前 13 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-23 14:30:02.714384+08:00
+import_market_snapshot 略過（目前 14 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-23 15:30:02.726578+08:00
+import_market_snapshot 略過（目前 15 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-23 16:30:02.711538+08:00
+import_market_snapshot 略過（目前 16 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-23 17:30:02.403408+08:00
+import_market_snapshot 執行開始
+{'id': 12, 'snapshot_time': '2026-06-23T17:30:02.403535', 'total_volume': 16441088, 'foreign_buy': 68457583377, 'investment_buy': -10517908392, 'dealer_buy': 12103769330, 'up_count': 236, 'down_count': 757, 'limit_up': 17, 'limit_down': 8, 'speculation_index': '22.1%', 'retail_confidence': '0.0 億', 'message': '市場快照已成功更新並寫入資料庫'}
+import_market_snapshot 執行結束
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+1 Failed download:
+['2069.TW']: TypeError("'NoneType' object is not subscriptable")
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-24 09:30:03.112265+08:00
+import_market_snapshot 略過（目前 9 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1906 支股票資料
+[TopicImporter] 符合條件: 29 支
+[TopicImporter] 熱門主題: 3 個
+[TopicImporter] 寫入完成，共 3 筆主題
+{'snapshot_time': '2026-06-24T09:30:03.112389', 'stocks_fetched': 1906, 'qualified_stocks': 29, 'hot_topics_count': 3, 'topics': [{'topic_name': '其他電子業', 'stock_count': 5, 'avg_change': 7.78, 'top3': ['2312 金寶', '5489 彩富', '6877 鏵友益']}, {'topic_name': '電子零組件業', 'stock_count': 4, 'avg_change': 7.41, 'top3': ['5464 霖宏', '6213 聯茂', '3550 聯穎']}, {'topic_name': '半導體業', 'stock_count': 6, 'avg_change': 6.6, 'top3': ['6829 千附精密', '8024 佑華', '6243 迅杰']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+1 Failed download:
+['1519.TW']: TypeError("'NoneType' object is not subscriptable")
+
+1 Failed download:
+['2413.TW']: TypeError("'NoneType' object is not subscriptable")
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-24 10:30:02.765825+08:00
+import_market_snapshot 略過（目前 10 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1907 支股票資料
+[TopicImporter] 符合條件: 113 支
+[TopicImporter] 熱門主題: 9 個
+[TopicImporter] 寫入完成，共 9 筆主題
+{'snapshot_time': '2026-06-24T10:30:02.765939', 'stocks_fetched': 1907, 'qualified_stocks': 113, 'hot_topics_count': 9, 'topics': [{'topic_name': '半導體業', 'stock_count': 29, 'avg_change': 6.73, 'top3': ['3588 通嘉', '6243 迅杰', '2302 麗正']}, {'topic_name': '光電業', 'stock_count': 25, 'avg_change': 6.6, 'top3': ['3297 杭特', '3481 群創', '3434 哲固']}, {'topic_name': '塑膠工業', 'stock_count': 3, 'avg_change': 6.57, 'top3': ['1326 台化', '1304 台聚', '1301 台塑']}, {'topic_name': '電子零組件業', 'stock_count': 17, 'avg_change': 6.55, 'top3': ['3550 聯穎', '5464 霖宏', '6213 聯茂']}, {'topic_name': '化學工業', 'stock_count': 4, 'avg_change': 6.46, 'top3': ['4722 國精化', '1714 和桐', '1717 長興']}, {'topic_name': '其他電子業', 'stock_count': 7, 'avg_change': 6.04, 'top3': ['5489 彩富', '6877 鏵友益', '2312 金寶']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 5, 'avg_change': 5.86, 'top3': ['6228 全譜', '8234 新漢', '2399 映泰']}, {'topic_name': '生技醫療業', 'stock_count': 4, 'avg_change': 5.25, 'top3': ['6712 長聖', '4162 智擎', '4183 福永生技']}, {'topic_name': '通信網路業', 'stock_count': 4, 'avg_change': 3.63, 'top3': ['3596 智易', '6163 華電網', '2485 兆赫']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-24 11:30:02.485727+08:00
+import_market_snapshot 略過（目前 11 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1909 支股票資料
+[TopicImporter] 符合條件: 85 支
+[TopicImporter] 熱門主題: 8 個
+[TopicImporter] 寫入完成，共 8 筆主題
+{'snapshot_time': '2026-06-24T11:30:02.485847', 'stocks_fetched': 1909, 'qualified_stocks': 85, 'hot_topics_count': 8, 'topics': [{'topic_name': '其他電子業', 'stock_count': 5, 'avg_change': 7.67, 'top3': ['5489 彩富', '6877 鏵友益', '3093 港建*']}, {'topic_name': '半導體業', 'stock_count': 22, 'avg_change': 6.86, 'top3': ['3588 通嘉', '2302 麗正', '6695 芯鼎']}, {'topic_name': '電子零組件業', 'stock_count': 13, 'avg_change': 6.82, 'top3': ['5464 霖宏', '6213 聯茂', '6141 柏承']}, {'topic_name': '觀光餐旅', 'stock_count': 3, 'avg_change': 6.55, 'top3': ['3522 御嵿', '5703 亞都', '2751 王座']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 4, 'avg_change': 6.38, 'top3': ['6228 全譜', '8234 新漢', '2399 映泰']}, {'topic_name': '光電業', 'stock_count': 16, 'avg_change': 6.02, 'top3': ['3297 杭特', '3434 哲固', '5251 天鉞電']}, {'topic_name': '塑膠工業', 'stock_count': 5, 'avg_change': 5.02, 'top3': ['1326 台化', '1304 台聚', '1301 台塑']}, {'topic_name': '生技醫療業', 'stock_count': 3, 'avg_change': 4.83, 'top3': ['6712 長聖', '4183 福永生技', '6841 長佳智能']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-24 12:30:03.053894+08:00
+import_market_snapshot 略過（目前 12 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1910 支股票資料
+[TopicImporter] 符合條件: 81 支
+[TopicImporter] 熱門主題: 9 個
+[TopicImporter] 寫入完成，共 9 筆主題
+{'snapshot_time': '2026-06-24T12:30:03.054001', 'stocks_fetched': 1910, 'qualified_stocks': 81, 'hot_topics_count': 9, 'topics': [{'topic_name': '電子零組件業', 'stock_count': 11, 'avg_change': 7.16, 'top3': ['5464 霖宏', '6213 聯茂', '6141 柏承']}, {'topic_name': '其他電子業', 'stock_count': 6, 'avg_change': 7.13, 'top3': ['5489 彩富', '6877 鏵友益', '3093 港建*']}, {'topic_name': '半導體業', 'stock_count': 20, 'avg_change': 7.02, 'top3': ['3588 通嘉', '5285 界霖', '2302 麗正']}, {'topic_name': '光電業', 'stock_count': 13, 'avg_change': 7.0, 'top3': ['3297 杭特', '3434 哲固', '5251 天鉞電']}, {'topic_name': '化學工業', 'stock_count': 3, 'avg_change': 6.85, 'top3': ['4722 國精化', '1708 東鹼', '1714 和桐']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 5, 'avg_change': 5.99, 'top3': ['6228 全譜', '8234 新漢', '2399 映泰']}, {'topic_name': '塑膠工業', 'stock_count': 4, 'avg_change': 5.47, 'top3': ['1326 台化', '1304 台聚', '1301 台塑']}, {'topic_name': '通信網路業', 'stock_count': 3, 'avg_change': 5.46, 'top3': ['3558 神準', '3596 智易', '3491 昇達科']}, {'topic_name': '生技醫療業', 'stock_count': 4, 'avg_change': 4.8, 'top3': ['6712 長聖', '4183 福永生技', '6446 藥華藥']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-24 13:30:01.815878+08:00
+import_market_snapshot 略過（目前 13 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-24 14:30:02.458196+08:00
+import_market_snapshot 略過（目前 14 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-24 15:31:41.311563+08:00
+import_market_snapshot 略過（目前 15 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-24 16:30:02.448205+08:00
+import_market_snapshot 略過（目前 16 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-24 17:30:01.847693+08:00
+import_market_snapshot 執行開始
+{'id': 13, 'snapshot_time': '2026-06-24T17:30:01.847827', 'total_volume': 16558216, 'foreign_buy': -38592352641, 'investment_buy': 7235957802, 'dealer_buy': -16984151224, 'up_count': 476, 'down_count': 496, 'limit_up': 23, 'limit_down': 4, 'speculation_index': '28.04%', 'retail_confidence': '0.0 億', 'message': '市場快照已成功更新並寫入資料庫'}
+import_market_snapshot 執行結束
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-25 09:30:03.027817+08:00
+import_market_snapshot 略過（目前 9 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1906 支股票資料
+[TopicImporter] 符合條件: 50 支
+[TopicImporter] 熱門主題: 4 個
+[TopicImporter] 寫入完成，共 4 筆主題
+{'snapshot_time': '2026-06-25T09:30:03.027909', 'stocks_fetched': 1906, 'qualified_stocks': 50, 'hot_topics_count': 4, 'topics': [{'topic_name': '光電業', 'stock_count': 3, 'avg_change': 8.22, 'top3': ['6226 光鼎', '5392 能率', '2374 佳能']}, {'topic_name': '電子零組件業', 'stock_count': 10, 'avg_change': 7.04, 'top3': ['5464 霖宏', '6213 聯茂', '5328 華容']}, {'topic_name': '半導體業', 'stock_count': 21, 'avg_change': 4.92, 'top3': ['6182 合晶', '2408 南亞科', '3443 創意']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 3, 'avg_change': 4.25, 'top3': ['2301 光寶科', '6831 邁科', '8234 新漢']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-25 10:30:03.001361+08:00
+import_market_snapshot 略過（目前 10 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1910 支股票資料
+[TopicImporter] 符合條件: 92 支
+[TopicImporter] 熱門主題: 8 個
+[TopicImporter] 寫入完成，共 8 筆主題
+{'snapshot_time': '2026-06-25T10:30:03.001438', 'stocks_fetched': 1910, 'qualified_stocks': 92, 'hot_topics_count': 8, 'topics': [{'topic_name': '其他業', 'stock_count': 4, 'avg_change': 9.82, 'top3': ['7777 能率亞洲', '1435 中福', '6901 鑽石投資']}, {'topic_name': '電子通路業', 'stock_count': 3, 'avg_change': 6.97, 'top3': ['6270 倍微', '3360 尚立', '2347 聯強']}, {'topic_name': '電子零組件業', 'stock_count': 24, 'avg_change': 6.83, 'top3': ['2483 百容', '5328 華容', '2472 立隆電']}, {'topic_name': '化學工業', 'stock_count': 5, 'avg_change': 6.68, 'top3': ['4716 大立', '1718 中纖', '4707 磐亞']}, {'topic_name': '其他電子業', 'stock_count': 9, 'avg_change': 6.63, 'top3': ['6658 聯策', '5489 彩富', '6409 旭隼']}, {'topic_name': '光電業', 'stock_count': 7, 'avg_change': 6.21, 'top3': ['6226 光鼎', '6246 臺龍', '3362 先進光']}, {'topic_name': '半導體業', 'stock_count': 19, 'avg_change': 5.77, 'top3': ['8024 佑華', '2458 義隆', '6182 合晶']}, {'topic_name': '塑膠工業', 'stock_count': 3, 'avg_change': 5.07, 'top3': ['1326 台化', '1313 聯成', '1301 台塑']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-25 11:30:02.476279+08:00
+import_market_snapshot 略過（目前 11 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1911 支股票資料
+[TopicImporter] 符合條件: 102 支
+[TopicImporter] 熱門主題: 9 個
+[TopicImporter] 寫入完成，共 9 筆主題
+{'snapshot_time': '2026-06-25T11:30:02.476385', 'stocks_fetched': 1911, 'qualified_stocks': 102, 'hot_topics_count': 9, 'topics': [{'topic_name': '其他業', 'stock_count': 5, 'avg_change': 9.86, 'top3': ['3284 太普高', '7777 能率亞洲', '1435 中福']}, {'topic_name': '化學工業', 'stock_count': 4, 'avg_change': 7.88, 'top3': ['4716 大立', '1718 中纖', '4707 磐亞']}, {'topic_name': '電子零組件業', 'stock_count': 23, 'avg_change': 7.27, 'top3': ['2483 百容', '5328 華容', '6584 南俊國際']}, {'topic_name': '電子通路業', 'stock_count': 3, 'avg_change': 6.48, 'top3': ['6270 倍微', '3360 尚立', '2347 聯強']}, {'topic_name': '半導體業', 'stock_count': 20, 'avg_change': 6.29, 'top3': ['5347 世界', '8024 佑華', '2458 義隆']}, {'topic_name': '光電業', 'stock_count': 8, 'avg_change': 6.27, 'top3': ['6226 光鼎', '6246 臺龍', '3362 先進光']}, {'topic_name': '其他電子業', 'stock_count': 10, 'avg_change': 5.88, 'top3': ['6658 聯策', '6409 旭隼', '5489 彩富']}, {'topic_name': '塑膠工業', 'stock_count': 3, 'avg_change': 5.34, 'top3': ['1313 聯成', '1326 台化', '1301 台塑']}, {'topic_name': '生技醫療業', 'stock_count': 4, 'avg_change': 4.14, 'top3': ['6762 達亞', '1565 精華', '4128 中天']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-25 12:30:02.971549+08:00
+import_market_snapshot 略過（目前 12 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1912 支股票資料
+[TopicImporter] 符合條件: 101 支
+[TopicImporter] 熱門主題: 9 個
+[TopicImporter] 寫入完成，共 9 筆主題
+{'snapshot_time': '2026-06-25T12:30:02.971673', 'stocks_fetched': 1912, 'qualified_stocks': 101, 'hot_topics_count': 9, 'topics': [{'topic_name': '其他業', 'stock_count': 5, 'avg_change': 9.86, 'top3': ['3284 太普高', '7777 能率亞洲', '1435 中福']}, {'topic_name': '化學工業', 'stock_count': 4, 'avg_change': 8.32, 'top3': ['4716 大立', '1718 中纖', '4707 磐亞']}, {'topic_name': '電子零組件業', 'stock_count': 23, 'avg_change': 7.57, 'top3': ['2483 百容', '5328 華容', '6584 南俊國際']}, {'topic_name': '塑膠工業', 'stock_count': 3, 'avg_change': 6.67, 'top3': ['1301 台塑', '1313 聯成', '1326 台化']}, {'topic_name': '其他電子業', 'stock_count': 11, 'avg_change': 6.57, 'top3': ['6658 聯策', '6409 旭隼', '5489 彩富']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 4, 'avg_change': 6.48, 'top3': ['2425 承啟', '5386 青雲', '3479 安勤']}, {'topic_name': '半導體業', 'stock_count': 20, 'avg_change': 6.46, 'top3': ['5347 世界', '2363 矽統', '8024 佑華']}, {'topic_name': '光電業', 'stock_count': 9, 'avg_change': 6.16, 'top3': ['6226 光鼎', '6246 臺龍', '5392 能率']}, {'topic_name': '生技醫療業', 'stock_count': 3, 'avg_change': 4.88, 'top3': ['6762 達亞', '1565 精華', '6620 漢達']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-25 13:30:02.319187+08:00
+import_market_snapshot 略過（目前 13 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-25 14:30:01.831263+08:00
+import_market_snapshot 略過（目前 14 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-25 15:30:02.400572+08:00
+import_market_snapshot 略過（目前 15 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-25 16:30:02.199235+08:00
+import_market_snapshot 略過（目前 16 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-25 17:30:02.810996+08:00
+import_market_snapshot 執行開始
+{'id': 14, 'snapshot_time': '2026-06-25T17:30:02.811138', 'total_volume': 13305901, 'foreign_buy': -177403206868, 'investment_buy': 3299888081, 'dealer_buy': -36486399618, 'up_count': 402, 'down_count': 561, 'limit_up': 19, 'limit_down': 2, 'speculation_index': '30.3%', 'retail_confidence': '0.0 億', 'message': '市場快照已成功更新並寫入資料庫'}
+import_market_snapshot 執行結束
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-26 10:30:03.365239+08:00
+import_market_snapshot 略過（目前 10 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1911 支股票資料
+[TopicImporter] 符合條件: 57 支
+[TopicImporter] 熱門主題: 5 個
+[TopicImporter] 寫入完成，共 5 筆主題
+{'snapshot_time': '2026-06-26T10:30:03.365363', 'stocks_fetched': 1911, 'qualified_stocks': 57, 'hot_topics_count': 5, 'topics': [{'topic_name': '化學工業', 'stock_count': 3, 'avg_change': 7.74, 'top3': ['1718 中纖', '4707 磐亞', '4716 大立']}, {'topic_name': '光電業', 'stock_count': 6, 'avg_change': 7.1, 'top3': ['3230 錦明', '5230 雷笛克光學', '6226 光鼎']}, {'topic_name': '半導體業', 'stock_count': 10, 'avg_change': 6.94, 'top3': ['8227 巨有科技', '6291 沛亨', '3228 金麗科']}, {'topic_name': '電子零組件業', 'stock_count': 19, 'avg_change': 6.69, 'top3': ['6174 安碁', '7795 長廣', '2484 希華']}, {'topic_name': '其他業', 'stock_count': 3, 'avg_change': 5.89, 'top3': ['1435 中福', '3284 太普高', '7777 能率亞洲']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-26 11:30:02.399816+08:00
+import_market_snapshot 略過（目前 11 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1913 支股票資料
+[TopicImporter] 符合條件: 38 支
+[TopicImporter] 熱門主題: 3 個
+[TopicImporter] 寫入完成，共 3 筆主題
+{'snapshot_time': '2026-06-26T11:30:02.399872', 'stocks_fetched': 1913, 'qualified_stocks': 38, 'hot_topics_count': 3, 'topics': [{'topic_name': '光電業', 'stock_count': 4, 'avg_change': 7.5, 'top3': ['6226 光鼎', '5230 雷笛克光學', '3230 錦明']}, {'topic_name': '電子零組件業', 'stock_count': 12, 'avg_change': 6.98, 'top3': ['8182 加高', '6174 安碁', '5328 華容']}, {'topic_name': '半導體業', 'stock_count': 5, 'avg_change': 6.2, 'top3': ['6291 沛亨', '8227 巨有科技', '3228 金麗科']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+1 Failed download:
+['2380.TW']: TypeError("'NoneType' object is not subscriptable")
+
+1 Failed download:
+['4130.TWO']: TypeError("'NoneType' object is not subscriptable")
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-26 12:30:01.997784+08:00
+import_market_snapshot 略過（目前 12 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1912 支股票資料
+[TopicImporter] 符合條件: 52 支
+[TopicImporter] 熱門主題: 4 個
+[TopicImporter] 寫入完成，共 4 筆主題
+{'snapshot_time': '2026-06-26T12:30:01.997868', 'stocks_fetched': 1912, 'qualified_stocks': 52, 'hot_topics_count': 4, 'topics': [{'topic_name': '光電業', 'stock_count': 5, 'avg_change': 7.96, 'top3': ['3230 錦明', '5230 雷笛克光學', '6226 光鼎']}, {'topic_name': '化學工業', 'stock_count': 3, 'avg_change': 6.88, 'top3': ['1718 中纖', '4707 磐亞', '4716 大立']}, {'topic_name': '電子零組件業', 'stock_count': 15, 'avg_change': 6.86, 'top3': ['8182 加高', '6174 安碁', '7795 長廣']}, {'topic_name': '半導體業', 'stock_count': 7, 'avg_change': 5.89, 'top3': ['6291 沛亨', '8227 巨有科技', '3228 金麗科']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-26 13:30:02.958820+08:00
+import_market_snapshot 略過（目前 13 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-26 14:30:02.476140+08:00
+import_market_snapshot 略過（目前 14 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-26 15:30:02.547565+08:00
+import_market_snapshot 略過（目前 15 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-26 16:30:02.709923+08:00
+import_market_snapshot 略過（目前 16 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-26 17:30:02.479708+08:00
+import_market_snapshot 執行開始
+{'id': 15, 'snapshot_time': '2026-06-26T17:30:02.479854', 'total_volume': 16387499, 'foreign_buy': -40510043503, 'investment_buy': 17416589807, 'dealer_buy': -7001006444, 'up_count': 75, 'down_count': 969, 'limit_up': 7, 'limit_down': 18, 'speculation_index': '28.3%', 'retail_confidence': '0.0 億', 'message': '市場快照已成功更新並寫入資料庫'}
+import_market_snapshot 執行結束
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+10 Failed downloads:
+['4555.TW', '4532.TW', '4130.TWO', '4198.TWO', '4564.TW', '4540.TW', '4577.TWO', '4549.TWO', '4192.TWO', '4168.TWO']: TypeError("'NoneType' object is not subscriptable")
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-29 09:30:02.868816+08:00
+import_market_snapshot 略過（目前 9 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1895 支股票資料
+[TopicImporter] 符合條件: 66 支
+[TopicImporter] 熱門主題: 7 個
+(pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query')
+[SQL: SELECT max(market_topic_snapshot.id) AS max_1 
+FROM market_topic_snapshot]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-29 10:30:02.975775+08:00
+import_market_snapshot 略過（目前 10 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1911 支股票資料
+[TopicImporter] 符合條件: 111 支
+[TopicImporter] 熱門主題: 11 個
+[TopicImporter] 寫入完成，共 11 筆主題
+{'snapshot_time': '2026-06-29T10:30:02.975888', 'stocks_fetched': 1911, 'qualified_stocks': 111, 'hot_topics_count': 11, 'topics': [{'topic_name': '其他業', 'stock_count': 3, 'avg_change': 9.95, 'top3': ['8033 雷虎', '5314 世紀*', '1435 中福']}, {'topic_name': '電子通路業', 'stock_count': 4, 'avg_change': 8.26, 'top3': ['5434 崇越', '3360 尚立', '3055 蔚華科']}, {'topic_name': '光電業', 'stock_count': 8, 'avg_change': 8.15, 'top3': ['8069 元太', '2406 國碩', '3230 錦明']}, {'topic_name': '生技醫療業', 'stock_count': 6, 'avg_change': 6.87, 'top3': ['6446 藥華藥', '7799 禾榮科', '6472 保瑞']}, {'topic_name': '化學工業', 'stock_count': 9, 'avg_change': 6.82, 'top3': ['4763 材料*-KY', '1718 中纖', '4720 德淵']}, {'topic_name': '半導體業', 'stock_count': 16, 'avg_change': 6.67, 'top3': ['6138 茂達', '8227 巨有科技', '5443 均豪']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 10, 'avg_change': 6.24, 'top3': ['2352 佳世達', '6669 緯穎', '2365 昆盈']}, {'topic_name': '電子零組件業', 'stock_count': 18, 'avg_change': 6.11, 'top3': ['4542 科嶠', '7795 長廣', '3023 信邦']}, {'topic_name': '航運業', 'stock_count': 3, 'avg_change': 5.65, 'top3': ['6753 龍德造船', '2630 亞航', '2634 漢翔']}, {'topic_name': '電機機械', 'stock_count': 7, 'avg_change': 5.58, 'top3': ['4532 瑞智', '1515 力山', '1560 中砂']}, {'topic_name': '其他電子業', 'stock_count': 11, 'avg_change': 5.4, 'top3': ['6139 亞翔', '3131 弘塑', '8183 精星']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['5312.TWO']: TypeError("'NoneType' object is not subscriptable")
+開始執行
+2026-06-29 11:30:02.593713+08:00
+import_market_snapshot 略過（目前 11 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1911 支股票資料
+[TopicImporter] 符合條件: 122 支
+[TopicImporter] 熱門主題: 14 個
+[TopicImporter] 寫入完成，共 14 筆主題
+{'snapshot_time': '2026-06-29T11:30:02.593824', 'stocks_fetched': 1911, 'qualified_stocks': 122, 'hot_topics_count': 14, 'topics': [{'topic_name': '紡織纖維', 'stock_count': 3, 'avg_change': 9.89, 'top3': ['1444 力麗', '1447 力鵬', '1445 大宇']}, {'topic_name': '其他業', 'stock_count': 4, 'avg_change': 8.76, 'top3': ['8033 雷虎', '5314 世紀*', '1435 中福']}, {'topic_name': '電子通路業', 'stock_count': 4, 'avg_change': 8.29, 'top3': ['5434 崇越', '3360 尚立', '3055 蔚華科']}, {'topic_name': '光電業', 'stock_count': 12, 'avg_change': 7.58, 'top3': ['8069 元太', '2406 國碩', '3230 錦明']}, {'topic_name': '化學工業', 'stock_count': 10, 'avg_change': 7.43, 'top3': ['4763 材料*-KY', '4716 大立', '1718 中纖']}, {'topic_name': '半導體業', 'stock_count': 16, 'avg_change': 6.79, 'top3': ['6138 茂達', '8227 巨有科技', '3227 原相']}, {'topic_name': '航運業', 'stock_count': 3, 'avg_change': 6.71, 'top3': ['6753 龍德造船', '2630 亞航', '2634 漢翔']}, {'topic_name': '運動休閒', 'stock_count': 3, 'avg_change': 6.58, 'top3': ['1736 喬山', '9914 美利達', '9960 邁達康']}, {'topic_name': '生技醫療業', 'stock_count': 7, 'avg_change': 6.53, 'top3': ['6446 藥華藥', '7799 禾榮科', '6472 保瑞']}, {'topic_name': '電子零組件業', 'stock_count': 16, 'avg_change': 6.13, 'top3': ['4542 科嶠', '7795 長廣', '6191 精成科']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 10, 'avg_change': 5.81, 'top3': ['2365 昆盈', '2352 佳世達', '6669 緯穎']}, {'topic_name': '電機機械', 'stock_count': 7, 'avg_change': 5.36, 'top3': ['4532 瑞智', '1515 力山', '1560 中砂']}, {'topic_name': '其他電子業', 'stock_count': 11, 'avg_change': 4.7, 'top3': ['3131 弘塑', '6139 亞翔', '8183 精星']}, {'topic_name': '通信網路業', 'stock_count': 4, 'avg_change': 4.17, 'top3': ['3491 昇達科', '3704 合勤控', '3596 智易']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-29 12:30:03.064202+08:00
+import_market_snapshot 略過（目前 12 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1913 支股票資料
+[TopicImporter] 符合條件: 107 支
+[TopicImporter] 熱門主題: 14 個
+[TopicImporter] 寫入完成，共 14 筆主題
+{'snapshot_time': '2026-06-29T12:30:03.064305', 'stocks_fetched': 1913, 'qualified_stocks': 107, 'hot_topics_count': 14, 'topics': [{'topic_name': '電子通路業', 'stock_count': 3, 'avg_change': 9.95, 'top3': ['5434 崇越', '3360 尚立', '3055 蔚華科']}, {'topic_name': '紡織纖維', 'stock_count': 3, 'avg_change': 9.8, 'top3': ['1447 力鵬', '1444 力麗', '1445 大宇']}, {'topic_name': '其他業', 'stock_count': 4, 'avg_change': 8.76, 'top3': ['8033 雷虎', '5314 世紀*', '1435 中福']}, {'topic_name': '化學工業', 'stock_count': 9, 'avg_change': 7.93, 'top3': ['4763 材料*-KY', '4707 磐亞', '1718 中纖']}, {'topic_name': '光電業', 'stock_count': 12, 'avg_change': 7.27, 'top3': ['8069 元太', '2406 國碩', '3230 錦明']}, {'topic_name': '運動休閒', 'stock_count': 3, 'avg_change': 7.03, 'top3': ['1736 喬山', '9960 邁達康', '9914 美利達']}, {'topic_name': '半導體業', 'stock_count': 14, 'avg_change': 6.51, 'top3': ['6138 茂達', '8227 巨有科技', '3227 原相']}, {'topic_name': '生技醫療業', 'stock_count': 9, 'avg_change': 6.07, 'top3': ['6446 藥華藥', '7799 禾榮科', '6929 佑全']}, {'topic_name': '電子零組件業', 'stock_count': 14, 'avg_change': 5.87, 'top3': ['4542 科嶠', '7795 長廣', '2472 立隆電']}, {'topic_name': '其他電子業', 'stock_count': 5, 'avg_change': 5.56, 'top3': ['3131 弘塑', '6139 亞翔', '6409 旭隼']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 8, 'avg_change': 5.43, 'top3': ['2352 佳世達', '2377 微星', '2365 昆盈']}, {'topic_name': '航運業', 'stock_count': 3, 'avg_change': 5.36, 'top3': ['6753 龍德造船', '2630 亞航', '2634 漢翔']}, {'topic_name': '電機機械', 'stock_count': 5, 'avg_change': 5.06, 'top3': ['4532 瑞智', '8996 高力', '1560 中砂']}, {'topic_name': '通信網路業', 'stock_count': 3, 'avg_change': 4.63, 'top3': ['3491 昇達科', '3704 合勤控', '3596 智易']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-29 13:30:02.082660+08:00
+import_market_snapshot 略過（目前 13 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-29 14:30:02.478783+08:00
+import_market_snapshot 略過（目前 14 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-29 15:30:02.382823+08:00
+import_market_snapshot 略過（目前 15 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-29 16:30:02.866450+08:00
+import_market_snapshot 略過（目前 16 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-29 17:30:02.613748+08:00
+import_market_snapshot 執行開始
+[TWTB4U] 20260628 無統計資料（可能尚未更新）。
+{'id': 16, 'snapshot_time': '2026-06-29T17:30:02.613883', 'total_volume': 11032850, 'foreign_buy': 0, 'investment_buy': 0, 'dealer_buy': 0, 'up_count': 659, 'down_count': 322, 'limit_up': 20, 'limit_down': 5, 'speculation_index': '0.0%', 'retail_confidence': '0.0 億', 'message': '市場快照已成功更新並寫入資料庫'}
+import_market_snapshot 執行結束
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+1 Failed download:
+['2481.TW']: TypeError("'NoneType' object is not subscriptable")
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-30 09:30:02.799963+08:00
+import_market_snapshot 略過（目前 9 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1902 支股票資料
+[TopicImporter] 符合條件: 80 支
+[TopicImporter] 熱門主題: 6 個
+[TopicImporter] 寫入完成，共 6 筆主題
+{'snapshot_time': '2026-06-30T09:30:02.800071', 'stocks_fetched': 1902, 'qualified_stocks': 80, 'hot_topics_count': 6, 'topics': [{'topic_name': '其他業', 'stock_count': 3, 'avg_change': 6.18, 'top3': ['5284 jpp-KY', '8033 雷虎', '5314 世紀*']}, {'topic_name': '電子零組件業', 'stock_count': 18, 'avg_change': 6.12, 'top3': ['8358 金居', '7795 長廣', '8046 南電']}, {'topic_name': '其他電子業', 'stock_count': 8, 'avg_change': 5.62, 'top3': ['6658 聯策', '6409 旭隼', '3131 弘塑']}, {'topic_name': '半導體業', 'stock_count': 23, 'avg_change': 5.31, 'top3': ['3016 嘉晶', '6182 合晶', '8150 南茂']}, {'topic_name': '光電業', 'stock_count': 10, 'avg_change': 4.91, 'top3': ['6226 光鼎', '8064 東捷', '2406 國碩']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 4, 'avg_change': 3.56, 'top3': ['3017 奇鋐', '2356 英業達', '2352 佳世達']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-30 10:30:03.247194+08:00
+import_market_snapshot 略過（目前 10 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1910 支股票資料
+[TopicImporter] 符合條件: 208 支
+[TopicImporter] 熱門主題: 13 個
+[TopicImporter] 寫入完成，共 13 筆主題
+{'snapshot_time': '2026-06-30T10:30:03.247299', 'stocks_fetched': 1910, 'qualified_stocks': 208, 'hot_topics_count': 13, 'topics': [{'topic_name': '航運業', 'stock_count': 4, 'avg_change': 7.6, 'top3': ['2630 亞航', '2634 漢翔', '6753 龍德造船']}, {'topic_name': '電子通路業', 'stock_count': 5, 'avg_change': 6.93, 'top3': ['3055 蔚華科', '3360 尚立', '5434 崇越']}, {'topic_name': '電子零組件業', 'stock_count': 54, 'avg_change': 6.84, 'top3': ['2478 大毅', '6274 台燿', '2493 揚博']}, {'topic_name': '生技醫療業', 'stock_count': 3, 'avg_change': 6.41, 'top3': ['4190 佐登-KY', '6446 藥華藥', '4162 智擎']}, {'topic_name': '其他業', 'stock_count': 4, 'avg_change': 6.36, 'top3': ['8033 雷虎', '5314 世紀*', '5284 jpp-KY']}, {'topic_name': '半導體業', 'stock_count': 48, 'avg_change': 6.16, 'top3': ['3707 漢磊', '8261 富鼎', '2481 強茂']}, {'topic_name': '化學工業', 'stock_count': 5, 'avg_change': 5.89, 'top3': ['1718 中纖', '4716 大立', '4739 康普']}, {'topic_name': '光電業', 'stock_count': 21, 'avg_change': 5.77, 'top3': ['2406 國碩', '6226 光鼎', '6278 台表科']}, {'topic_name': '玻璃陶瓷', 'stock_count': 3, 'avg_change': 5.3, 'top3': ['1809 中釉', '1810 和成', '1802 台玻']}, {'topic_name': '電機機械', 'stock_count': 6, 'avg_change': 5.27, 'top3': ['8222 寶一', '4503 金雨', '8996 高力']}, {'topic_name': '通信網路業', 'stock_count': 8, 'avg_change': 5.08, 'top3': ['6285 啟碁', '2345 智邦', '2455 全新']}, {'topic_name': '其他電子業', 'stock_count': 16, 'avg_change': 5.06, 'top3': ['3289 宜特', '6658 聯策', '8021 尖點']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 17, 'avg_change': 4.58, 'top3': ['2352 佳世達', '3017 奇鋐', '6831 邁科']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+1 Failed download:
+['2618.TW']: TypeError("'NoneType' object is not subscriptable")
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-06-30 11:30:03.057209+08:00
+import_market_snapshot 略過（目前 11 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1913 支股票資料
+[TopicImporter] 符合條件: 244 支
+[TopicImporter] 熱門主題: 14 個
+[TopicImporter] 寫入完成，共 14 筆主題
+{'snapshot_time': '2026-06-30T11:30:03.057341', 'stocks_fetched': 1913, 'qualified_stocks': 244, 'hot_topics_count': 14, 'topics': [{'topic_name': '化學工業', 'stock_count': 5, 'avg_change': 8.01, 'top3': ['1710 東聯', '1718 中纖', '4739 康普']}, {'topic_name': '航運業', 'stock_count': 5, 'avg_change': 7.79, 'top3': ['2634 漢翔', '2630 亞航', '2208 台船']}, {'topic_name': '電子零組件業', 'stock_count': 64, 'avg_change': 7.11, 'top3': ['2478 大毅', '3357 臺慶科', '2493 揚博']}, {'topic_name': '玻璃陶瓷', 'stock_count': 3, 'avg_change': 6.8, 'top3': ['1809 中釉', '1802 台玻', '1810 和成']}, {'topic_name': '其他業', 'stock_count': 6, 'avg_change': 6.75, 'top3': ['5314 世紀*', '4541 晟田', '8033 雷虎']}, {'topic_name': '光電業', 'stock_count': 23, 'avg_change': 6.74, 'top3': ['2406 國碩', '5371 中光電', '6226 光鼎']}, {'topic_name': '電機機械', 'stock_count': 8, 'avg_change': 6.51, 'top3': ['8222 寶一', '8027 鈦昇', '3167 大量']}, {'topic_name': '半導體業', 'stock_count': 55, 'avg_change': 6.36, 'top3': ['3707 漢磊', '3532 台勝科', '8261 富鼎']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 17, 'avg_change': 5.82, 'top3': ['2352 佳世達', '6831 邁科', '3017 奇鋐']}, {'topic_name': '電子通路業', 'stock_count': 7, 'avg_change': 5.81, 'top3': ['3055 蔚華科', '3360 尚立', '5434 崇越']}, {'topic_name': '其他電子業', 'stock_count': 18, 'avg_change': 5.73, 'top3': ['8021 尖點', '6658 聯策', '3289 宜特']}, {'topic_name': '生技醫療業', 'stock_count': 3, 'avg_change': 5.57, 'top3': ['6446 藥華藥', '4190 佐登-KY', '4162 智擎']}, {'topic_name': '通信網路業', 'stock_count': 12, 'avg_change': 5.17, 'top3': ['3163 波若威', '6285 啟碁', '6190 萬泰科']}, {'topic_name': '金融保險業', 'stock_count': 3, 'avg_change': 3.4, 'top3': ['2851 中再保', '5864 致和證', '6026 福邦證']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+10 Failed downloads:
+['3661.TW', '3623.TWO', '4106.TW', '3564.TWO', '3570.TWO', '3664.TWO', '4102.TWO', '3715.TW', '3716.TW', '4126.TWO']: TypeError("'NoneType' object is not subscriptable")
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+
+10 Failed downloads:
+['6741.TWO', '6796.TW', '6691.TW', '6671.TW', '6664.TWO', '6761.TWO', '6762.TWO', '6689.TW', '6735.TWO', '6829.TWO']: TypeError("'NoneType' object is not subscriptable")
+開始執行
+2026-06-30 12:30:02.384534+08:00
+import_market_snapshot 略過（目前 12 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1897 支股票資料
+[TopicImporter] 符合條件: 271 支
+[TopicImporter] 熱門主題: 14 個
+(pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([Errno 60] Operation timed out)')
+[SQL: SELECT max(market_topic_snapshot.id) AS max_1 
+FROM market_topic_snapshot]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-30 13:30:03.086408+08:00
+import_market_snapshot 略過（目前 13 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-30 14:30:03.107196+08:00
+import_market_snapshot 略過（目前 14 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-30 15:30:02.995030+08:00
+import_market_snapshot 略過（目前 15 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-30 16:30:02.480036+08:00
+import_market_snapshot 略過（目前 16 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-06-30 17:30:01.930629+08:00
+import_market_snapshot 執行開始
+{'id': 17, 'snapshot_time': '2026-06-30T17:30:01.930752', 'total_volume': 12976240, 'foreign_buy': -4336207557, 'investment_buy': 14519080129, 'dealer_buy': -4592887685, 'up_count': 747, 'down_count': 237, 'limit_up': 59, 'limit_down': 1, 'speculation_index': '28.92%', 'retail_confidence': '0.0 億', 'message': '市場快照已成功更新並寫入資料庫'}
+import_market_snapshot 執行結束
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-07-01 09:30:03.436147+08:00
+import_market_snapshot 略過（目前 9 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1906 支股票資料
+[TopicImporter] 符合條件: 117 支
+[TopicImporter] 熱門主題: 9 個
+[TopicImporter] 寫入完成，共 9 筆主題
+{'snapshot_time': '2026-07-01T09:30:03.436264', 'stocks_fetched': 1906, 'qualified_stocks': 117, 'hot_topics_count': 9, 'topics': [{'topic_name': '電子零組件業', 'stock_count': 34, 'avg_change': 7.13, 'top3': ['6672 騰輝電子-KY', '5328 華容', '6174 安碁']}, {'topic_name': '其他業', 'stock_count': 3, 'avg_change': 6.4, 'top3': ['8033 雷虎', '4541 晟田', '5314 世紀*']}, {'topic_name': '光電業', 'stock_count': 10, 'avg_change': 6.19, 'top3': ['7402 邑錡', '2406 國碩', '3563 牧德']}, {'topic_name': '半導體業', 'stock_count': 32, 'avg_change': 6.02, 'top3': ['6719 力智', '8261 富鼎', '6488 環球晶']}, {'topic_name': '航運業', 'stock_count': 5, 'avg_change': 5.81, 'top3': ['6753 龍德造船', '2645 長榮航太', '2630 亞航']}, {'topic_name': '其他電子業', 'stock_count': 8, 'avg_change': 5.8, 'top3': ['6658 聯策', '2312 金寶', '3030 德律']}, {'topic_name': '通信網路業', 'stock_count': 4, 'avg_change': 4.98, 'top3': ['3221 台嘉碩', '2345 智邦', '3163 波若威']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 4, 'avg_change': 4.7, 'top3': ['3594 磐儀', '3706 神達', '6831 邁科']}, {'topic_name': '電機機械', 'stock_count': 3, 'avg_change': 3.97, 'top3': ['4526 東台', '1590 亞德客-KY', '8996 高力']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-07-01 10:30:02.718153+08:00
+import_market_snapshot 略過（目前 10 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1909 支股票資料
+[TopicImporter] 符合條件: 131 支
+[TopicImporter] 熱門主題: 10 個
+[TopicImporter] 寫入完成，共 10 筆主題
+{'snapshot_time': '2026-07-01T10:30:02.718260', 'stocks_fetched': 1909, 'qualified_stocks': 131, 'hot_topics_count': 10, 'topics': [{'topic_name': '光電業', 'stock_count': 7, 'avg_change': 7.88, 'top3': ['6226 光鼎', '3563 牧德', '6164 華興']}, {'topic_name': '電子零組件業', 'stock_count': 35, 'avg_change': 7.34, 'top3': ['5328 華容', '6174 安碁', '8182 加高']}, {'topic_name': '航運業', 'stock_count': 4, 'avg_change': 6.48, 'top3': ['2645 長榮航太', '6753 龍德造船', '2630 亞航']}, {'topic_name': '通信網路業', 'stock_count': 3, 'avg_change': 6.34, 'top3': ['3221 台嘉碩', '3694 海華', '2345 智邦']}, {'topic_name': '半導體業', 'stock_count': 34, 'avg_change': 6.26, 'top3': ['5483 中美晶', '6719 力智', '8261 富鼎']}, {'topic_name': '其他業', 'stock_count': 4, 'avg_change': 5.91, 'top3': ['8033 雷虎', '8466 美吉吉-KY', '8935 邦泰']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 9, 'avg_change': 5.88, 'top3': ['3594 磐儀', '3005 神基', '6831 邁科']}, {'topic_name': '化學工業', 'stock_count': 4, 'avg_change': 5.62, 'top3': ['1710 東聯', '6509 聚和', '1709 和益']}, {'topic_name': '電機機械', 'stock_count': 5, 'avg_change': 5.47, 'top3': ['1515 力山', '2049 上銀', '8222 寶一']}, {'topic_name': '其他電子業', 'stock_count': 15, 'avg_change': 5.42, 'top3': ['2464 盟立', '6658 聯策', '3030 德律']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-07-01 11:30:02.491011+08:00
+import_market_snapshot 略過（目前 11 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1911 支股票資料
+[TopicImporter] 符合條件: 171 支
+[TopicImporter] 熱門主題: 14 個
+[TopicImporter] 寫入完成，共 14 筆主題
+{'snapshot_time': '2026-07-01T11:30:02.491147', 'stocks_fetched': 1911, 'qualified_stocks': 171, 'hot_topics_count': 14, 'topics': [{'topic_name': '紡織纖維', 'stock_count': 3, 'avg_change': 8.56, 'top3': ['1447 力鵬', '1466 聚隆', '1444 力麗']}, {'topic_name': '通信網路業', 'stock_count': 6, 'avg_change': 8.44, 'top3': ['3221 台嘉碩', '3466 德晉', '3672 康聯訊']}, {'topic_name': '汽車工業', 'stock_count': 5, 'avg_change': 7.41, 'top3': ['2250 IKKA-KY', '2233 宇隆', '3717 聯嘉投控']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 11, 'avg_change': 7.14, 'top3': ['5426 振發', '4916 事欣科', '3594 磐儀']}, {'topic_name': '光電業', 'stock_count': 13, 'avg_change': 7.1, 'top3': ['7402 邑錡', '6226 光鼎', '3490 單井']}, {'topic_name': '電子零組件業', 'stock_count': 44, 'avg_change': 7.05, 'top3': ['5328 華容', '6174 安碁', '6173 信昌電']}, {'topic_name': '電子通路業', 'stock_count': 3, 'avg_change': 6.71, 'top3': ['3055 蔚華科', '3048 益登', '2347 聯強']}, {'topic_name': '其他電子業', 'stock_count': 13, 'avg_change': 6.7, 'top3': ['2464 盟立', '6658 聯策', '3030 德律']}, {'topic_name': '半導體業', 'stock_count': 40, 'avg_change': 6.66, 'top3': ['5483 中美晶', '6719 力智', '8261 富鼎']}, {'topic_name': '航運業', 'stock_count': 4, 'avg_change': 6.4, 'top3': ['2645 長榮航太', '6753 龍德造船', '2630 亞航']}, {'topic_name': '其他業', 'stock_count': 6, 'avg_change': 6.15, 'top3': ['8033 雷虎', '8466 美吉吉-KY', '4541 晟田']}, {'topic_name': '塑膠工業', 'stock_count': 3, 'avg_change': 5.96, 'top3': ['1303 南亞', '1314 中石化', '1326 台化']}, {'topic_name': '化學工業', 'stock_count': 5, 'avg_change': 5.86, 'top3': ['1710 東聯', '6509 聚和', '1727 中華化']}, {'topic_name': '電機機械', 'stock_count': 7, 'avg_change': 5.8, 'top3': ['1515 力山', '8027 鈦昇', '2049 上銀']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+2 Failed downloads:
+['1717.TW', '1720.TW']: TypeError("'NoneType' object is not subscriptable")
+
+1 Failed download:
+['4106.TW']: TypeError("'NoneType' object is not subscriptable")
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-07-01 12:30:02.857189+08:00
+import_market_snapshot 略過（目前 12 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1912 支股票資料
+[TopicImporter] 符合條件: 178 支
+[TopicImporter] 熱門主題: 14 個
+[TopicImporter] 寫入完成，共 14 筆主題
+{'snapshot_time': '2026-07-01T12:30:02.857290', 'stocks_fetched': 1912, 'qualified_stocks': 178, 'hot_topics_count': 14, 'topics': [{'topic_name': '通信網路業', 'stock_count': 8, 'avg_change': 8.47, 'top3': ['3221 台嘉碩', '3466 德晉', '3027 盛達']}, {'topic_name': '光電業', 'stock_count': 11, 'avg_change': 7.53, 'top3': ['7402 邑錡', '6226 光鼎', '3490 單井']}, {'topic_name': '電子零組件業', 'stock_count': 43, 'avg_change': 7.32, 'top3': ['5328 華容', '6174 安碁', '6173 信昌電']}, {'topic_name': '電腦及週邊設備業', 'stock_count': 11, 'avg_change': 7.14, 'top3': ['5426 振發', '3349 寶德', '4916 事欣科']}, {'topic_name': '半導體業', 'stock_count': 35, 'avg_change': 6.92, 'top3': ['5483 中美晶', '6719 力智', '6909 創控']}, {'topic_name': '汽車工業', 'stock_count': 6, 'avg_change': 6.69, 'top3': ['2250 IKKA-KY', '2233 宇隆', '3717 聯嘉投控']}, {'topic_name': '數位雲端', 'stock_count': 3, 'avg_change': 6.61, 'top3': ['6870 騰雲', '3687 歐買尬', '7547 碩網']}, {'topic_name': '電機機械', 'stock_count': 6, 'avg_change': 6.31, 'top3': ['1515 力山', '8027 鈦昇', '2049 上銀']}, {'topic_name': '化學工業', 'stock_count': 6, 'avg_change': 6.26, 'top3': ['1721 三晃', '1710 東聯', '1709 和益']}, {'topic_name': '其他業', 'stock_count': 7, 'avg_change': 6.21, 'top3': ['8033 雷虎', '4541 晟田', '8466 美吉吉-KY']}, {'topic_name': '航運業', 'stock_count': 4, 'avg_change': 6.11, 'top3': ['2645 長榮航太', '6753 龍德造船', '2630 亞航']}, {'topic_name': '紡織纖維', 'stock_count': 9, 'avg_change': 6.05, 'top3': ['1467 南緯', '1447 力鵬', '1466 聚隆']}, {'topic_name': '其他電子業', 'stock_count': 14, 'avg_change': 6.0, 'top3': ['2464 盟立', '6658 聯策', '3030 德律']}, {'topic_name': '電子通路業', 'stock_count': 4, 'avg_change': 5.67, 'top3': ['3055 蔚華科', '6189 豐藝', '3048 益登']}]}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-07-01 13:30:02.628313+08:00
+import_market_snapshot 略過（目前 13 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-07-01 14:33:07.641286+08:00
+import_market_snapshot 略過（目前 14 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-07-01 15:30:02.140620+08:00
+import_market_snapshot 略過（目前 15 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-07-01 16:30:02.258090+08:00
+import_market_snapshot 略過（目前 16 時，僅下午五點執行）
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+開始執行
+2026-07-01 17:30:02.548080+08:00
+import_market_snapshot 執行開始
+{'id': 18, 'snapshot_time': '2026-07-01T17:30:02.548196', 'total_volume': 14491414, 'foreign_buy': -508728992, 'investment_buy': 365126892, 'dealer_buy': 14585072281, 'up_count': 417, 'down_count': 560, 'limit_up': 35, 'limit_down': 1, 'speculation_index': '25.4%', 'retail_confidence': '0.0 億', 'message': '市場快照已成功更新並寫入資料庫'}
+import_market_snapshot 執行結束
+import_market_topics 執行開始
+{'skipped': True, 'reason': '非交易時段'}
+import_market_topics 執行結束
+/Users/nina_lin/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+$4987.TWO: possibly delisted; no price data found  (period=10d)
+
+1 Failed download:
+['4987.TWO']: possibly delisted; no price data found  (period=10d)
+開始執行
+2026-07-02 09:30:02.865481+08:00
+import_market_snapshot 略過（目前 9 時，僅下午五點執行）
+import_market_topics 執行開始
+[TopicImporter] 共 1925 支，分 20 批下載...
+[TopicImporter] 取得 1907 支股票資料
+[TopicImporter] 符合條件: 45 支
+[TopicImporter] 熱門主題: 5 個
+[TopicImporter] 寫入完成，共 5 筆主題
+{'snapshot_time': '2026-07-02T09:30:02.865604', 'stocks_fetched': 1907, 'qualified_stocks': 45, 'hot_topics_count': 5, 'topics': [{'topic_name': '紡織纖維', 'stock_count': 3, 'avg_change': 6.91, 'top3': ['1467 南緯', '1447 力鵬', '1470 大統新創']}, {'topic_name': '電子零組件業', 'stock_count': 16, 'avg_change': 6.23, 'top3': ['7795 長廣', '5460 同協', '3550 聯穎']}, {'topic_name': '光電業', 'stock_count': 6, 'avg_change': 6.04, 'top3': ['6164 華興', '2466 冠西電', '2406 國碩']}, {'topic_name': '半導體業', 'stock_count': 4, 'avg_change': 5.71, 'top3': ['6182 合晶', '6138 茂達', '2340 台亞']}, {'topic_name': '其他電子業', 'stock_count': 3, 'avg_change': 5.11, 'top3': ['3628 盈正', '6215 和椿', '2359 所羅門']}]}
+import_market_topics 執行結束
