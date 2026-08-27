@@ -1,0 +1,83 @@
+<div class="home-container">
+
+  <!-- Header -->
+  <header class="home-header">
+    <div class="header-avatar"></div>
+    <div class="header-greeting">
+      <span class="greeting-text">Hello, Buffett!</span>
+    </div>
+  </header>
+
+  <!-- Progress Card -->
+  <section class="progress-card">
+    <div class="progress-card__label">
+      <span class="dateStr">{{ dateStr() }}</span>
+    </div>
+
+    @if (isLoading()) {
+      <div class="state-msg">載入中...</div>
+    } @else if (hasError()) {
+      <div class="state-msg state-msg--error">資料載入失敗，請稍後再試</div>
+    } @else if (!snapshot()) {
+      <div class="state-msg">今日尚無市場快照資料</div>
+    } @else {
+      <div class="progress-card__body">
+
+        <!-- 左：市場溫度分數 + 趨勢 -->
+        <div class="progress-card__left">
+          <div class="progress-percent">
+            <div class="score-label">昨日市場溫度</div>
+            <div class="score-value">{{ snapshot()!.market_score }}%</div>
+            <div class="trend-text">{{ snapshot()!.trend }}</div>
+          </div>
+
+          <div class="stat-row">
+            <span class="stat-item up">↑ {{ snapshot()!.up_count }}</span>
+            <span class="stat-item down">↓ {{ snapshot()!.down_count }}</span>
+            <span class="stat-item limit-up">漲停 {{ snapshot()!.limit_up }}</span>
+            <span class="stat-item limit-down">跌停 {{ snapshot()!.limit_down }}</span>
+          </div>
+        </div>
+
+        <!-- 右：圓環圖 -->
+        <div class="progress-card__right">
+          <div class="progress-ring">
+            <svg viewBox="0 0 80 80" class="ring-svg">
+              <circle class="ring-track" cx="40" cy="40" r="34" />
+              <circle
+                class="ring-fill"
+                cx="40" cy="40" r="34"
+                [style.stroke-dashoffset]="ringOffset"
+              />
+            </svg>
+            <div class="ring-center-text">{{ snapshot()!.market_score }}</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 三大法人 -->
+      <div class="institutional-row">
+        <div class="institutional-item">
+          <span class="inst-label">外資</span>
+          <span class="inst-value" [class.positive]="snapshot()!.foreign_buy > 0" [class.negative]="snapshot()!.foreign_buy < 0">
+            {{ formatYi(snapshot()!.foreign_buy) }}
+          </span>
+        </div>
+        <div class="institutional-item">
+          <span class="inst-label">投信</span>
+          <span class="inst-value" [class.positive]="snapshot()!.investment_buy > 0" [class.negative]="snapshot()!.investment_buy < 0">
+            {{ formatYi(snapshot()!.investment_buy) }}
+          </span>
+        </div>
+        <div class="institutional-item">
+          <span class="inst-label">自營</span>
+          <span class="inst-value" [class.positive]="snapshot()!.dealer_buy > 0" [class.negative]="snapshot()!.dealer_buy < 0">
+            {{ formatYi(snapshot()!.dealer_buy) }}
+          </span>
+        </div>
+      </div>
+    }
+  </section>
+
+</div>

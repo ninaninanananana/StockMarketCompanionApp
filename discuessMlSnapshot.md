@@ -23,7 +23,7 @@ SPEC 上「今日驅動因素」有多條理由（如「↑ 外資買超 影響 
 目前 `_fetch_institutional`（法人）和 `speculation_index`（當沖）都是盤後才有資料。
 若做「盤中分析」，實際可用的只有 `total_volume`、`up_count`/`down_count`、`limit_up`/`limit_down`。
 這樣的資料量是否足夠？
-答：分析為每小時跑,`_fetch_institutional`（法人）和 `speculation_index`是昨日資料,看是否對於今日分析有幫助,若無幫助則可不理會
+答：分析為每小時跑,`foreign_buy`（法人）和 `speculation_index`是昨日資料,看是否對於今日分析有幫助,若無幫助則可不理會
 **Q4. SPEC 上「影響 +32」這類分數怎麼來？**
 是讓 XAI 自行判斷給分，還是有預設的計算公式？
 答：XAI 自行判斷給分
@@ -67,7 +67,7 @@ VARCHAR(100) 內存的是什麼形式？
 
 **Q11. XGBoost 訓練資料與標籤（最關鍵）**
 XGBoost / LightGBM 是監督式學習，需要 **歷史資料 + 標籤（label）** 才能訓練。
-- 訓練資料：MarketSnapshot 目前有多少歷史筆數？ 答：３筆
+- 訓練資料：MarketSnapshot 目前有多少歷史筆數？ 答：55筆
 - 標籤定義：`market_score` 的 ground truth 是什麼？例如「隔日大盤漲跌幅」、「當日成交量百分位」，還是另有定義？
 答：Ground Truth 定義應該是「未來 N 日的大盤表現」。定義為：「隔日大盤漲跌幅」（T+1 報酬率）或「未來 3 日大盤最大震盪幅度」。
 **Q12. 冷啟動問題**
@@ -77,16 +77,16 @@ XGBoost / LightGBM 是監督式學習，需要 **歷史資料 + 標籤（label�
 **Q13. Claude API 轉譯是否要加入？**
 Q6 提到可以用 Claude API 將 SHAP 結果轉成人性化文字寫入 `trend`。
 這個要加進本次實作嗎？若要，`.env` 裡有 `ANTHROPIC_API_KEY` 嗎？
-
+答：不用 記得XAI有中文語系
 **Q14. 模型檔案的存放與更新策略**
 訓練好的模型（`.pkl` / `.joblib`）要放在哪裡？
 - 每次 importer 執行都重新 train（資料少時快，但每小時 re-train 效率差）？
 - 還是 train 一次存檔，之後只做 inference，另外安排定期 re-train？
-
+答： train 一次存檔，之後只做 inference，另外安排定期 re-train
 **Q10 時間評估（回覆）**
 純 inference（XGBoost predict + SHAP）：< 1 秒。
 若加 Claude API 轉譯 `trend` 文字：約 10–30 秒。
 整體預估遠低於 3 分鐘，**可以直接整合進 `market_snapshot_importer.py`**。
-
+答：純 inference（XGBoost predict + SHAP） 若整體預估遠低於 3 分鐘，**可以直接整合進 `market_snapshot_importer.py`**。
 
 

@@ -1,0 +1,586 @@
+// ============================================================
+// Design Tokens
+// ============================================================
+$purple-primary: #7c6ef2;
+$purple-light: #ede9ff;
+$purple-pale: #f4f1ff;
+$pink-soft: #f8c8c8;
+$pink-bg: #fceaea;
+$text-dark: #1a1a2e;
+$text-mid: #5a5a7a;
+$text-muted: #a0a0b8;
+$white: #ffffff;
+$bg-page: #f7f6fb;
+$radius-card: 20px;
+$radius-btn: 14px;
+$shadow-card: 0 4px 20px rgba(124, 110, 242, 0.08);
+
+// ============================================================
+// Base
+// ============================================================
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: $bg-page;
+  font-family: 'Inter', 'SF Pro Display', sans-serif;
+  max-width: 430px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// ============================================================
+// Header
+// ============================================================
+.home-header {
+  display: flex;
+  align-items: center;
+  padding: 56px 20px 16px;
+  gap: 12px;
+
+  .header-avatar {
+     background: center / cover no-repeat;
+     background-image: url('/assets/images/user.jpg');
+
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+
+
+  }
+
+  .header-greeting {
+    flex: 1;
+
+    .greeting-text {
+      font-size: 17px;
+      font-weight: 600;
+      color: $text-dark;
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: $white;
+  box-shadow: $shadow-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $text-mid;
+  font-size: 15px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $purple-light;
+    color: $purple-primary;
+  }
+}
+
+// ============================================================
+// Progress Card
+// ============================================================
+.progress-card {
+  margin: 0 16px 16px;
+  background: $purple-light;
+  border-radius: $radius-card;
+  padding: 20px;
+  box-shadow: $shadow-card;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $purple-primary;
+    margin-bottom: 16px;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.progress-percent {
+  font-size: 52px;
+  font-weight: 800;
+  color: $text-dark;
+  line-height: 1;
+}
+
+.progress-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: $white;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: $text-mid;
+  width: fit-content;
+}
+
+// Ring chart
+.progress-ring {
+  position: relative;
+  width: 80px;
+  height: 80px;
+
+  .ring-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .ring-track {
+    fill: none;
+    stroke: $white;
+    stroke-width: 8;
+  }
+
+  .ring-fill {
+    fill: none;
+    stroke: $purple-primary;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 213.6;
+    stroke-dashoffset: 10.7; // 95% filled
+    transition: stroke-dashoffset 0.8s ease;
+  }
+
+  .ring-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: $purple-primary;
+    color: $white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba($purple-primary, 0.4);
+  }
+}
+
+// 載入 / 錯誤 / 無資料
+.state-msg {
+  padding: 20px 0 8px;
+  font-size: 14px;
+  color: $text-muted;
+  text-align: center;
+
+  &--error { color: #e57373; }
+}
+
+// 分數區塊
+.score-label {
+  font-size: 12px;
+  color: $text-mid;
+  margin-bottom: 4px;
+}
+
+.score-value {
+  font-size: 48px;
+  font-weight: 800;
+  color: $text-dark;
+  line-height: 1;
+}
+
+.trend-text {
+  font-size: 12px;
+  color: $text-mid;
+  margin-top: 8px;
+  line-height: 1.5;
+  max-width: 160px;
+}
+
+// 漲跌家數
+.stat-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+
+  .stat-item {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 8px;
+    background: $white;
+
+    &.up         { color: #e53935; }
+    &.down       { color: #43a047; }
+    &.limit-up   { color: #c62828; background: #ffebee; }
+    &.limit-down { color: #2e7d32; background: #e8f5e9; }
+  }
+}
+
+// 圓環中間數字
+.ring-center-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: $text-dark;
+}
+
+// 三大法人列
+.institutional-row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba($purple-primary, 0.1);
+
+  .institutional-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .inst-label {
+    font-size: 11px;
+    color: $text-muted;
+    font-weight: 500;
+  }
+
+  .inst-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: $text-dark;
+
+    &.positive { color: #e53935; }
+    &.negative { color: #43a047; }
+  }
+}
+
+// ============================================================
+// Middle Grid (Activity + Stats)
+// ============================================================
+.middle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0 16px 16px;
+}
+
+// ============================================================
+// Activity Recaps Card
+// ============================================================
+.activity-card {
+  background: $white;
+  border-radius: $radius-card;
+  padding: 16px;
+  box-shadow: $shadow-card;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+  position: relative;
+
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $text-dark;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 11px;
+    color: $text-muted;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  &__image {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 90px;
+    background: $purple-pale;
+    margin: 4px 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.btn-get-started {
+  background: $purple-primary;
+  color: $white;
+  border: none;
+  border-radius: $radius-btn;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.2s, transform 0.1s;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ============================================================
+// Stats Column
+// ============================================================
+.stats-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-card {
+  background: $white;
+  border-radius: $radius-card;
+  padding: 14px;
+  box-shadow: $shadow-card;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 11px;
+    font-weight: 600;
+    color: $text-mid;
+  }
+
+  &__value {
+    font-size: 18px;
+    font-weight: 800;
+    color: $text-dark;
+    line-height: 1.2;
+
+    .stat-unit {
+      font-size: 11px;
+      font-weight: 500;
+      color: $text-muted;
+    }
+  }
+
+  &__sub {
+    font-size: 10px;
+    color: $text-muted;
+  }
+
+  &__chart {
+    margin-top: 6px;
+    height: 30px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .chart-line {
+      fill: none;
+      stroke: $purple-primary;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+}
+
+// ============================================================
+// Meals Section
+// ============================================================
+.meals-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 16px;
+}
+
+.meal-card {
+  background: $pink-bg;
+  border-radius: $radius-card;
+  padding: 18px;
+  box-shadow: 0 4px 20px rgba($pink-soft, 0.4);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .meal-icon {
+      font-size: 22px;
+    }
+
+    .meal-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: $text-dark;
+    }
+
+    .meal-calories {
+      font-size: 12px;
+      color: $text-muted;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 6px;
+
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      background: $white;
+      font-size: 18px;
+      font-weight: 300;
+      color: $purple-primary;
+    }
+  }
+}
+
+.meal-macros {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  text-align: center;
+
+  .macro-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .macro-value {
+    font-size: 16px;
+    font-weight: 800;
+    color: $text-dark;
+  }
+
+  .macro-label {
+    font-size: 10px;
+    color: $text-muted;
+    font-weight: 500;
+  }
+}
+
+// ============================================================
+// Bottom Navigation
+// ============================================================
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: $white;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -4px 24px rgba($text-dark, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 12px 16px 24px;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 12px;
+  color: $text-muted;
+  font-size: 10px;
+  font-weight: 500;
+  transition: color 0.2s;
+
+  i {
+    font-size: 20px;
+  }
+
+  &--active {
+    color: $purple-primary;
+
+    i {
+      background: $purple-light;
+      padding: 8px;
+      border-radius: 12px;
+    }
+  }
+
+  &--center {
+    background: $purple-primary;
+    color: $white;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    margin-top: -20px;
+    box-shadow: 0 4px 16px rgba($purple-primary, 0.4);
+
+    i {
+      font-size: 24px;
+    }
+  }
+
+  &:hover:not(&--active):not(&--center) {
+    color: $purple-primary;
+  }
+}

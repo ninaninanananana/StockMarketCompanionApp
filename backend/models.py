@@ -66,11 +66,11 @@ class MarketSnapshot(Base):
 
     analysis_version: Mapped[str] = mapped_column(VARCHAR(20), nullable=False, default="v1")
     source_status: Mapped[str] = mapped_column(VARCHAR(20), nullable=False, default="SUCCESS")
-    speculation_index: Mapped[str] = mapped_column(Float, nullable=False,default=0)
-    retail_confidence: Mapped[str] = mapped_column(Float, nullable=False, default=0)
+    speculation_index: Mapped[float] = mapped_column(Float, nullable=False, default=0)
+    retail_confidence: Mapped[float] = mapped_column(Float, nullable=False, default=0)
     created_at: Mapped[datetime] = mapped_column(
         DateTime, nullable=False, server_default=func.now()
     )
     updated_at: Mapped[datetime] = mapped_column(
-        DateTime, nullable=False, server_default=func.now()
+        DateTime, nullable=False, server_default=func.now(), onupdate=func.now()
     )
