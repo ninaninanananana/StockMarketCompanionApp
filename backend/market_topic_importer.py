@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore")
 import yfinance as yf
 import pandas as pd
 from sqlalchemy.orm import Session
-from sqlalchemy import func, text
+from sqlalchemy import text
 
 from models import MarketTopicSnapshot
 from database import SessionLocal, Base, engine
@@ -30,16 +30,19 @@ MIN_VOLUME_ZHANG = 2000       # 條件 A：成交量 > 2,000 張
 MIN_TRADING_VALUE = 100_000_000  # 條件 B：成交金額 > 1 億 NTD
 MIN_INDUSTRY_COUNT = 3        # 同產業至少 N 家
 TOP_N = 3                     # 每個主題取漲幅前 N 名
+# cron 於每小時 :30 執行，13:30 那次實際會在 13:30:0x 啟動，
+# 收盤後保留 10 分鐘緩衝，讓收盤那一輪仍能執行。
+CLOSE_GRACE_MINUTES = 10
 
 
 # ── 交易時段判斷 ──────────────────────────────────────
 def is_trading_hours() -> bool:
-    """週一至週五 09:00–13:30 台北時間。"""
+    """週一至週五 09:00–13:30（含收盤後 CLOSE_GRACE_MINUTES 分鐘緩衝），台北時間。"""
     now = datetime.now(TAIPEI_TZ)
     if now.weekday() >= 5:
         return False
     open_t  = now.replace(hour=9,  minute=0,  second=0, microsecond=0)
-    close_t = now.replace(hour=13, minute=30, second=0, microsecond=0)
+    close_t = now.replace(hour=13, minute=30 + CLOSE_GRACE_MINUTES, second=0, microsecond=0)
     return open_t <= now <= close_t
 
 
@@ -140,11 +143,45 @@ def _meets_volume_condition(stats: dict) -> bool:
     return cond_a or cond_b
 
 
+# ── 産業擴散度 ────────────────────────────────────────
+def compute_industry_diffusion(
+    all_stats: dict[str, dict],
+    ticker_meta: dict[str, dict],
+) -> Optional[float]:
+    """
+    産業擴散度 = 平均漲幅 > 0 的産業數 / 全産業數。
+
+    使用全市場所有股票（含未達熱門門檻者）計算，
+    每個産業取成分股平均漲幅判斷方向，避免單一個股的雜訊。
+    此為全系統唯一的擴散度定義（market_snapshot 也使用此值）。
+    無任何資料時回傳 None（代表缺值，而非 0）。
+    """
+    industry_changes: dict[str, list[float]] = defaultdict(list)
+
+    for ticker, stats in all_stats.items():
+        meta = ticker_meta.get(ticker)
+        if not meta or not meta.get("industry"):
+            continue
+        industry_changes[meta["industry"]].append(stats["change_pct"])
+
+    if not industry_changes:
+        return None
+
+    up_count = sum(
+        1 for changes in industry_changes.values()
+        if sum(changes) / len(changes) > 0
+    )
+    return round(up_count / len(industry_changes), 3)
+
+
 # ── 主流程 ────────────────────────────────────────────
 def fetch_and_import(db: Session, force: bool = False) -> dict:
     """
     掃描全市場，找出熱門主題寫入 market_topic_snapshot。
-    force=True 可略過交易時段限制（測試用）。
+    force=True 可略過交易時段限制（收盤結算 / 測試用）。
+
+    回傳結果含 industry_diffusion，由呼叫端（scheduler）傳給
+    market_snapshot_importer，確保評分與存檔使用同一個擴散度。
     """
     if not force and not is_trading_hours():
         return {"skipped": True, "reason": "非交易時段"}
@@ -153,6 +190,9 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
 
     # 1. 讀取股票清單
     stocks = _load_stocks(db)
+    # 結束讀取交易、釋放連線：後續 yfinance 下載需數分鐘，
+    # 長時間佔用閒置連線會被 DB 端切斷（Lost connection to MySQL server）
+    db.commit()
     if not stocks:
         return {"skipped": True, "reason": "stock_master 無資料"}
 
@@ -174,7 +214,11 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
 
     print(f"[TopicImporter] 取得 {len(all_stats)} 支股票資料")
 
-    # 3. 篩選：漲幅 >= 3% AND (條件A OR 條件B)
+    # 3. 計算産業擴散度（用全市場資料，不受熱門門檻影響）
+    diffusion = compute_industry_diffusion(all_stats, ticker_meta)
+    print(f"[TopicImporter] 産業擴散度: {diffusion}")
+
+    # 4. 篩選：漲幅 >= 3% AND (條件A OR 條件B)
     qualified: list[dict] = []
     for ticker, stats in all_stats.items():
         if stats["change_pct"] < MIN_CHANGE_PCT:
@@ -193,7 +237,7 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
 
     print(f"[TopicImporter] 符合條件: {len(qualified)} 支")
 
-    # 4. 依產業分組，>= 3 家才成立主題
+    # 5. 依產業分組，>= 3 家才成立主題
     groups: dict[str, list] = defaultdict(list)
     for s in qualified:
         groups[s["industry"]].append(s)
@@ -211,8 +255,7 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
 
     print(f"[TopicImporter] 熱門主題: {len(hot_topics)} 個")
 
-    # 5. 寫入新資料（依平均漲幅大到小順序寫入，id 即代表排名）
-    next_id = (db.query(func.max(MarketTopicSnapshot.id)).scalar() or 0) + 1
+    # 6. 寫入新資料（依平均漲幅大到小順序寫入，同批次 id 由 DB AUTO_INCREMENT 遞增，即代表排名）
     inserted = []
     for industry, members in hot_topics:
         top3 = sorted(members, key=lambda x: x["change_pct"], reverse=True)[:TOP_N]
@@ -222,7 +265,6 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
         ]
 
         db.add(MarketTopicSnapshot(
-            id=next_id,
             snapshot_time=now,
             topic_name=industry,
             trend="",
@@ -230,7 +272,7 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
             stock_list=stock_list,
             reason=None,
         ))
-        next_id += 1
+        db.flush()   # 逐筆 flush，確保 id 依排名順序遞增
         avg_chg = round(sum(s["change_pct"] for s in members) / len(members), 2)
         inserted.append({
             "topic_name":  industry,
@@ -243,11 +285,12 @@ def fetch_and_import(db: Session, force: bool = False) -> dict:
     print(f"[TopicImporter] 寫入完成，共 {len(inserted)} 筆主題")
 
     return {
-        "snapshot_time":    now.isoformat(),
-        "stocks_fetched":   len(all_stats),
-        "qualified_stocks": len(qualified),
-        "hot_topics_count": len(hot_topics),
-        "topics":           inserted,
+        "snapshot_time":      now.isoformat(),
+        "stocks_fetched":     len(all_stats),
+        "industry_diffusion": diffusion,
+        "qualified_stocks":   len(qualified),
+        "hot_topics_count":   len(hot_topics),
+        "topics":             inserted,
     }
 
 

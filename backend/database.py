@@ -16,7 +16,12 @@ DATABASE_URL = (
     "?ssl_verify_cert=false"
 )
 
-engine = create_engine(DATABASE_URL, echo=False)
+engine = create_engine(
+    DATABASE_URL,
+    echo=False,
+    pool_pre_ping=True,   # 取用連線前先檢查，避免拿到已被 DB 端切斷的連線
+    pool_recycle=300,     # TiDB Serverless 會切斷閒置連線，5 分鐘回收一次
+)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 

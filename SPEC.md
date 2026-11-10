@@ -1,5 +1,87 @@
 📈 Market Lens
 幫使用者理解市場，而不是替使用者做決定
+
+════════════════════════════
+🎯 專案主要目標（研究主軸）
+════════════════════════════
+依據：《Market Lens 碩論研究調整建議》（2026-10-07）
+討論紀錄：discussRnnForecast.md
+
+研究題目
+中文：以可解釋市場狀態與歷史相似情境為基礎之台灣股市狀態預測研究
+英文：Explainable Market-State Forecasting in the Taiwan Stock Market:
+      A Historical-Analogue and Feature-Attribution Approach
+
+核心原則
+先把「市場溫度計」量準 → 再預測市場狀態的變化 → 最後把預測講清楚
+每個階段都必須有「驗證關卡」，不能只做出結果
+
+研究架構
+Raw Market Data
+→ 四大可解釋構面（法人動向／市場廣度／投機活躍度／散戶槓桿）
+→ 三種權重方案與敏感度分析
+→ Validated Market Temperature（經驗證的市場溫度）
+→ State Features（level／mean／trend／volatility／momentum）
+→ Model Comparison（Naive／Linear・Elastic Net／KNN／RF・XGBoost／RNR）
+→ ΔT／升溫・持平・降溫 預測
+→ SHAP ＋ Historical Analogue 雙重解釋
+→ Explainable Market Insight
+
+目標一｜Phase 1：校準市場溫度計（RQ1）
+・四大構面的每個指標都要交代：來源、定義、方向、頻率、缺值、異常值、正規化方式
+・定位：加權公式是「可解釋的市場指標（interpretable composite index）」，
+  不宣稱是 AI 模型
+・權重不能只有一組，至少三種方案一起比較：
+  A. Domain-informed：依金融邏輯／文獻給權重（目前 0.40／0.25／0.15／0.20）
+  B. Equal weight：四構面各 0.25
+  C. Calibrated：用資料校準，限制搜尋範圍、只用訓練期資料
+・敏感度分析：主要權重 ±10%、±20%，權重微調時溫度分類不應整批翻轉
+・驗證方式：construct validity、已知市場事件、外部市場變數
+
+目標二｜Phase 2：預測市場狀態的變化（RQ2）
+・主要 target：ΔT = T(t+1) − T(t)，或轉為 升溫／持平／降溫
+・次要 target：T(t+1) 絕對分數（保留作比較）
+・Input：每個構面整理成少數有金融意義的狀態特徵，不把整段原始序列直接塞進模型
+・窗口：60～65 個交易日為候選，並與其他窗口長度比較
+・RNR 必須與 baseline 在同一條件下比較，不預設 RNR 最好：
+  Naive／Persistence（必備）、Linear／Elastic Net、KNN、Random Forest／XGBoost
+・RNR 的研究價值：Historical analogue（今天像歷史上的哪些日子、那些日子之後怎麼走）
+
+目標三｜Phase 3：雙重解釋（RQ3）
+・鏡頭 1｜SHAP：哪些構面把這次預測往上或往下推
+  （例：法人 +1.4、市場廣度 +0.8、投機活躍度 −4.1、散戶槓桿 −2.7）
+・鏡頭 2｜Historical Analogue：與今天最相似的歷史日期、相似來源、之後的走勢
+・檢驗兩種解釋是否一致、可追溯
+
+研究問題
+RQ1：由法人動向、市場廣度、投機活躍度與散戶槓桿建構的市場溫度指標，
+     是否能穩定且合理地表示台灣股市的整體市場狀態？
+RQ2：以市場狀態特徵為輸入的 similarity-based forecasting，
+     是否能有效預測下一交易日的市場狀態變化？
+RQ3：Historical analogue 與 SHAP 的雙重解釋，能否提供一致且可追溯的預測理由？
+（延伸 RQ4，期刊版：雙重解釋能否提升使用者的理解、透明感與信任校準）
+
+時序驗證規則（全程必須遵守，避免偷看未來）
+・使用 walk-forward／rolling／expanding window 驗證，不可 random split
+・正規化的平均數與標準差只能用訓練期計算
+・權重校準只能在訓練期進行
+・特徵選擇只能看當時已知的歷史資料
+・每往前預測一步，才把已發生的資料加入訓練集
+
+範圍界定
+・本階段只使用結構化市場資料
+・LLM／新聞情緒留在文獻回顧，作為下一階段（multimodal market-state forecasting）
+
+近期工作項目
+1. 四大構面原始變數表（來源、定義、方向、頻率、缺值、異常值、正規化）
+2. 三種權重方案與 sensitivity analysis 設計
+3. 主要 target 定為 ΔT 或 升溫／持平／降溫，絕對分數為 secondary
+4. 每個構面整理成 level／mean／trend／volatility／momentum
+5. 重畫研究架構圖，標出每一步怎麼驗證
+
+════════════════════════════
+📱 App 畫面規格
+════════════════════════════
 🏠 首頁｜市場總覽
 ────────────────────────────
 今日市場　　　　更新時間 09:03

@@ -26,7 +26,6 @@ $shadow-card: 0 4px 20px rgba(124, 110, 242, 0.08);
   font-family: 'Inter', 'SF Pro Display', sans-serif;
   max-width: 430px;
   margin: 0 auto;
-  padding-bottom: 80px;
   position: relative;
   overflow-x: hidden;
 }
@@ -217,6 +216,12 @@ $shadow-card: 0 4px 20px rgba(124, 110, 242, 0.08);
   font-weight: 800;
   color: $text-dark;
   line-height: 1;
+}
+
+.score-unit {
+  font-size: 14px;
+  font-weight: 500;
+  color: $text-mid;
 }
 
 .trend-text {
@@ -515,6 +520,120 @@ $shadow-card: 0 4px 20px rgba(124, 110, 242, 0.08);
     color: $text-muted;
     font-weight: 500;
   }
+}
+
+// ============================================================
+// Topics Section
+// ============================================================
+.topics-section {
+  margin: 0 16px 16px;
+}
+
+.topics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.topics-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: $text-dark;
+}
+
+.topics-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topics-time {
+  font-size: 12px;
+  color: $text-muted;
+}
+
+.reload-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: $white;
+  box-shadow: $shadow-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: $purple-primary;
+  transition: background 0.2s;
+
+  &:hover:not(:disabled) {
+    background: $purple-light;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .spinning {
+    display: inline-block;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+.topic-card {
+  background: $white;
+  border-radius: $radius-card;
+  padding: 14px 16px;
+  box-shadow: $shadow-card;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+}
+
+.topic-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: $text-dark;
+}
+
+.topic-time {
+  font-size: 11px;
+  color: $text-muted;
+}
+
+.topic-stocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stock-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: $purple-primary;
+  background: $purple-pale;
+  border-radius: 8px;
+  padding: 3px 8px;
 }
 
 // ============================================================

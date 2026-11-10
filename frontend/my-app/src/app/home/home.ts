@@ -1,10 +1,11 @@
 import { Component, OnInit, inject, signal, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser, CommonModule } from '@angular/common';
-import { MarketSnapshotService, MarketSnapshot } from '../services/market-snapshot.service';
+import { isPlatformBrowser, CommonModule, DatePipe } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MarketSnapshotService, MarketSnapshot, MarketTopicSnapshot } from '../services/market-snapshot.service';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, DatePipe],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -17,34 +18,63 @@ export class Home implements OnInit {
   isLoading = signal(true);
   hasError = signal(false);
 
+  topics = signal<MarketTopicSnapshot[]>([]);
+  topicsLoading = signal(true);
+  topicsError = signal(false);
+  topicsUpdatedAt = signal<string | null>(null);
+
   ngOnInit(): void {
     this.dateStr.set(new Date().toLocaleDateString('zh-TW'));
     if (isPlatformBrowser(this.platformId)) {
       this.loadSnapshot();
+      this.loadTopics();
     }
   }
 
-  private getYesterday(): string {
-    const d = new Date();
-    d.setDate(d.getDate() - 1);
-    return d.toISOString().slice(0, 10); // YYYY-MM-DD
-  }
-
+  /**
+   * 取最新一筆快照：每日快照於收盤後 17:30 產生（21:30 補齊盤後資料），
+   * 因此盤中顯示的是上一個交易日的資料。
+   */
   private loadSnapshot(): void {
     this.isLoading.set(true);
     this.hasError.set(false);
 
-    this.marketSnapshotService.getByDate(this.getYesterday()).subscribe({
+    this.marketSnapshotService.getLatest().subscribe({
       next: (data) => {
-        // API 無資料時回 []，有資料時回物件
-        this.snapshot.set(Array.isArray(data) ? null : data);
-        console.log(this.snapshot())
+        this.snapshot.set(data);
         this.isLoading.set(false);
       },
-      error: (err) => {
-        console.error('[MarketSnapshot] API error:', err);
-        this.hasError.set(true);
+      error: (err: HttpErrorResponse) => {
+        // 404 = 尚無任何快照資料，顯示「無資料」而非錯誤
+        if (err.status === 404) {
+          this.snapshot.set(null);
+        } else {
+          console.error('[MarketSnapshot] API error:', err);
+          this.hasError.set(true);
+        }
         this.isLoading.set(false);
+      },
+    });
+  }
+
+  loadTopics(): void {
+    this.topicsLoading.set(true);
+    this.topicsError.set(false);
+
+    this.marketSnapshotService.getLatestTopics().subscribe({
+      next: (data) => {
+        this.topics.set(data);
+        this.topicsUpdatedAt.set(new Date().toLocaleTimeString('zh-TW'));
+        this.topicsLoading.set(false);
+      },
+      error: (err: HttpErrorResponse) => {
+        if (err.status === 404) {
+          this.topics.set([]);
+        } else {
+          console.error('[MarketTopics] API error:', err);
+          this.topicsError.set(true);
+        }
+        this.topicsLoading.set(false);
       },
     });
   }

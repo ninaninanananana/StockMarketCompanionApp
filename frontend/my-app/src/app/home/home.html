@@ -19,15 +19,15 @@
     } @else if (hasError()) {
       <div class="state-msg state-msg--error">資料載入失敗，請稍後再試</div>
     } @else if (!snapshot()) {
-      <div class="state-msg">今日尚無市場快照資料</div>
+      <div class="state-msg">尚無市場快照資料</div>
     } @else {
       <div class="progress-card__body">
 
         <!-- 左：市場溫度分數 + 趨勢 -->
         <div class="progress-card__left">
           <div class="progress-percent">
-            <div class="score-label">昨日市場溫度</div>
-            <div class="score-value">{{ snapshot()!.market_score }}%</div>
+            <div class="score-label">市場溫度（{{ snapshot()!.snapshot_time | date: 'M/d' }} 收盤）</div>
+            <div class="score-value">{{ snapshot()!.market_score }}<span class="score-unit"> / 100</span></div>
             <div class="trend-text">{{ snapshot()!.trend }}</div>
           </div>
 
@@ -76,6 +76,45 @@
             {{ formatYi(snapshot()!.dealer_buy) }}
           </span>
         </div>
+      </div>
+    }
+  </section>
+
+  <!-- Topics Section -->
+  <section class="topics-section">
+    <div class="topics-header">
+      <span class="topics-title">熱門主題</span>
+      <div class="topics-meta">
+        @if (topicsUpdatedAt()) {
+          <span class="topics-time">{{ topicsUpdatedAt() }}</span>
+        }
+        <button class="reload-btn" (click)="loadTopics()" [disabled]="topicsLoading()">
+          <span [class.spinning]="topicsLoading()">↻</span>
+        </button>
+      </div>
+    </div>
+
+    @if (topicsLoading()) {
+      <div class="state-msg">載入中...</div>
+    } @else if (topicsError()) {
+      <div class="state-msg state-msg--error">資料載入失敗，請稍後再試</div>
+    } @else if (topics().length === 0) {
+      <div class="state-msg">尚無主題資料</div>
+    } @else {
+      <div class="topics-list">
+        @for (topic of topics(); track topic.id) {
+          <div class="topic-card">
+            <div class="topic-card__top">
+              <span class="topic-name">{{ topic.topic_name }}</span>
+              <span class="topic-time">{{ topic.snapshot_time | date: 'HH:mm' }}</span>
+            </div>
+            <div class="topic-stocks">
+              @for (stock of topic.stock_list; track stock.id) {
+                <span class="stock-tag">{{ stock.name }}</span>
+              }
+            </div>
+          </div>
+        }
       </div>
     }
   </section>

@@ -1,16 +1,17 @@
+import os
+import secrets
 from datetime import date
 from typing import Optional
 
-from fastapi import FastAPI, Depends, Query, HTTPException
+from fastapi import FastAPI, Depends, Header, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
 from database import get_db
-from models import MarketSnapshot
+from models import MarketSnapshot, MarketTopicSnapshot
 from stock_importer import fetch_and_import as fetch_stocks
-from market_snapshot_importer import fetch_and_import as fetch_market_snapshot
-from market_topic_importer import fetch_and_import as fetch_market_topics
+from market_snapshot_importer import fetch_and_import as fetch_market_snapshot, taipei_now
 
 app = FastAPI(title="Stock Market Companion API")
 
@@ -22,20 +23,33 @@ app.add_middleware(
 )
 
 
+def require_api_key(x_api_key: Optional[str] = Header(None)) -> None:
+    """
+    保護會觸發外部 API 呼叫與寫入 DB 的 POST 端點。
+    需在 .env 設定 ADMIN_API_KEY，呼叫時帶 header：X-API-Key: <ADMIN_API_KEY>
+    未設定 ADMIN_API_KEY 時一律拒絕。
+    """
+    expected = os.getenv("ADMIN_API_KEY")
+    if not expected:
+        raise HTTPException(status_code=503, detail="伺服器未設定 ADMIN_API_KEY，管理端點停用")
+    if not x_api_key or not secrets.compare_digest(x_api_key, expected):
+        raise HTTPException(status_code=401, detail="API key 無效")
+
+
 @app.get("/")
 def root():
     return {"message": "Stock Market Companion API is running"}
 
 
-@app.post("/stocks/import")
+@app.post("/stocks/import", dependencies=[Depends(require_api_key)])
 def import_stocks(db: Session = Depends(get_db)):
     """從 TwStock 抓取台股基本資料並寫入 stock_master"""
     return fetch_stocks(db)
 
 
-@app.post("/market/snapshot")
+@app.post("/market/snapshot", dependencies=[Depends(require_api_key)])
 def import_market_snapshot(db: Session = Depends(get_db)):
-    """從 FinMind 抓取市場總覽快照並寫入 market_snapshot（支援盤中多次呼叫）"""
+    """抓取市場總覽快照並寫入 market_snapshot（同日重複呼叫會更新，缺值欄位沿用既有值）"""
     return fetch_market_snapshot(db)
 
 
@@ -68,7 +82,7 @@ def get_market_snapshot(
     target_date 省略時預設為今日。
     """
     try:
-        query_date = date.fromisoformat(target_date) if target_date else date.today()
+        query_date = date.fromisoformat(target_date) if target_date else taipei_now().date()
     except ValueError:
         raise HTTPException(status_code=400, detail="日期格式錯誤，請使用 YYYY-MM-DD")
 
@@ -98,6 +112,9 @@ def _serialize(s: MarketSnapshot) -> dict:
         "investment_buy": s.investment_buy,
         "dealer_buy": s.dealer_buy,
         "total_volume": s.total_volume,
+        "margin_balance": s.margin_balance,
+        "short_sell_balance": s.short_sell_balance,
+        "industry_diffusion": s.industry_diffusion,
         "speculation_index": s.speculation_index,
         "retail_confidence": s.retail_confidence,
         "source_status": s.source_status,
@@ -107,10 +124,30 @@ def _serialize(s: MarketSnapshot) -> dict:
     }
 
 
-@app.post("/market/topics")
-def import_market_topics(
-    db: Session = Depends(get_db),
-    force: bool = Query(False, description="略過交易時段限制（測試用）"),
-):
-    """掃描全市場找出熱門主題（漲幅 >= 3%、同產業 >= 3 家），寫入 market_topic_snapshot"""
-    return fetch_market_topics(db, force=force)
+# ── GET /market/topics/latest ──────────────────────────────────────────────
+@app.get("/market/topics/latest")
+def get_latest_market_topics(db: Session = Depends(get_db)):
+    """回傳最新一批 market_topic_snapshot（同一 snapshot_time 的全部主題，依排名排序）"""
+    latest_time = db.query(func.max(MarketTopicSnapshot.snapshot_time)).scalar()
+    topics = (
+        db.query(MarketTopicSnapshot)
+        .filter(MarketTopicSnapshot.snapshot_time == latest_time)
+        .order_by(MarketTopicSnapshot.id)
+        .all()
+    ) if latest_time else []
+    if not topics:
+        raise HTTPException(status_code=404, detail="尚無主題快照資料")
+    return [
+        {
+            "id": t.id,
+            "snapshot_time": t.snapshot_time.isoformat(),
+            "topic_name": t.topic_name,
+            "trend": t.trend,
+            "topic_score": t.topic_score,
+            "stock_list": t.stock_list,
+            "reason": t.reason,
+            "created_at": t.created_at.isoformat() if t.created_at else None,
+        }
+        for t in topics
+    ]
+

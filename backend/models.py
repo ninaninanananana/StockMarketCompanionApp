@@ -68,6 +68,19 @@ class MarketSnapshot(Base):
     source_status: Mapped[str] = mapped_column(VARCHAR(20), nullable=False, default="SUCCESS")
     speculation_index: Mapped[float] = mapped_column(Float, nullable=False, default=0)
     retail_confidence: Mapped[float] = mapped_column(Float, nullable=False, default=0)
+
+    # 散戶槓桿擴充
+    margin_balance: Mapped[int] = mapped_column(BigInteger, nullable=False, default=0)      # 融資餘額絕對值（元）
+    short_sell_balance: Mapped[int] = mapped_column(BigInteger, nullable=False, default=0)  # 融券餘額（股數）
+
+    # 市場廣度擴充
+    industry_diffusion: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)  # 産業擴散度（0–1）
+
+    # ── DB 遷移 SQL（首次部署後執行）────────────────────────────────────────────
+    # ALTER TABLE market_snapshot
+    #   ADD COLUMN margin_balance      BIGINT NOT NULL DEFAULT 0,
+    #   ADD COLUMN short_sell_balance  BIGINT NOT NULL DEFAULT 0,
+    #   ADD COLUMN industry_diffusion  FLOAT  NOT NULL DEFAULT 0.0;
     created_at: Mapped[datetime] = mapped_column(
         DateTime, nullable=False, server_default=func.now()
     )
